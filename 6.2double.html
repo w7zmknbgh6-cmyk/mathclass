@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>6.2 二倍角公式 · 互动课件</title>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$', '$$'], ['\\[', '\\]']]
+  },
+  svg: { fontCache: 'global' }
+};
+</script>
+<style>
+  :root {
+    --primary: #2563eb;
+    --primary-light: #dbeafe;
+    --accent: #0d9488;
+    --accent-light: #ccfbf1;
+    --bg: #f8fafc;
+    --card: #ffffff;
+    --text: #1e293b;
+    --muted: #64748b;
+    --border: #e2e8f0;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    margin: 0;
+    padding: 0;
+  }
+  header {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: #fff;
+    padding: 2.5rem 1rem;
+    text-align: center;
+  }
+  header h1 { margin: 0; font-size: 2rem; }
+  header p { margin: 0.5rem 0 0; opacity: 0.95; }
+  main { max-width: 900px; margin: 0 auto; padding: 2rem 1rem; }
+  section {
+    background: var(--card);
+    border-radius: 1rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+  }
+  .section-title {
+    background: var(--primary-light);
+    color: var(--primary);
+    font-size: 1.15rem;
+    font-weight: 700;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .content { padding: 1.25rem; }
+  .intro {
+    background: #f1f5f9;
+    border-left: 4px solid var(--accent);
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    color: var(--text);
+  }
+  .step-box {
+    background: #f8fafc;
+    border: 1px dashed var(--border);
+    border-radius: 0.75rem;
+    padding: 1rem;
+    margin: 0.75rem 0;
+    min-height: 3rem;
+  }
+  .step { display: none; }
+  .step.active { display: block; animation: fadeIn 0.4s ease; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.55rem 1rem;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+    margin: 0.5rem 0.5rem 0 0;
+  }
+  .btn:hover { background: #1d4ed8; }
+  .btn:active { transform: scale(0.98); }
+  .btn-outline {
+    background: #fff;
+    color: var(--primary);
+    border: 1px solid var(--primary);
+  }
+  .btn-outline:hover { background: var(--primary-light); }
+  .btn-accent { background: var(--accent); }
+  .btn-accent:hover { background: #0f766e; }
+  .problem {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 0.75rem;
+    padding: 1rem;
+    margin: 1rem 0;
+  }
+  .problem-title {
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+  }
+  .solution {
+    display: none;
+    background: #f8fafc;
+    border-left: 4px solid var(--accent);
+    padding: 0.75rem 1rem;
+    border-radius: 0 0.5rem 0.5rem 0;
+    margin-top: 0.75rem;
+  }
+  .solution.show { display: block; animation: fadeIn 0.4s ease; }
+  .solution-title {
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+  .idea {
+    background: var(--accent-light);
+    border-radius: 0.5rem;
+    padding: 0.6rem 0.9rem;
+    margin-bottom: 0.75rem;
+    color: #115e59;
+  }
+  .answer-highlight {
+    color: #dc2626;
+    font-weight: 700;
+  }
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+  }
+  .summary-card {
+    background: #f8fafc;
+    border: 1px solid var(--border);
+    border-radius: 0.75rem;
+    padding: 1rem;
+  }
+  .summary-card h4 {
+    margin: 0 0 0.5rem;
+    color: var(--primary);
+  }
+  ul, ol { margin: 0.5rem 0; padding-left: 1.25rem; }
+  li { margin: 0.35rem 0; }
+  .formula-box {
+    background: var(--primary-light);
+    border-radius: 0.75rem;
+    padding: 1rem;
+    text-align: center;
+    margin: 0.75rem 0;
+  }
+  .formula-box p { margin: 0.35rem 0; }
+  .hint { color: var(--muted); font-size: 0.9rem; }
+  @media (max-width: 640px) {
+    header h1 { font-size: 1.5rem; }
+    .section-title { font-size: 1rem; }
+    main { padding: 1rem; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>6.2 二倍角公式</h1>
+  <p>公式推导 · 典型例题 · 练习讲评 · 课堂小结</p>
+</header>
+
+<main>
+
+<!-- 第一部分：公式推导 -->
+<section>
+  <div class="section-title">一、二倍角公式的推导（点击“下一步”逐步出现）</div>
+  <div class="content">
+    <div class="intro">
+      <strong>核心思想：</strong>在两角和公式中令 $\beta = \alpha$，即可得到二倍角公式。
+    </div>
+
+    <h3>1. 正弦二倍角公式</h3>
+    <div class="step-box" id="sinSteps">
+      <div class="step active">
+        从两角和的正弦公式出发：<br>
+        $$\sin(\alpha + \beta) = \sin\alpha\cos\beta + \cos\alpha\sin\beta$$
+      </div>
+      <div class="step">
+        令 $\beta = \alpha$，则：<br>
+        $$\sin(\alpha + \alpha) = \sin\alpha\cos\alpha + \cos\alpha\sin\alpha$$
+      </div>
+      <div class="step">
+        合并同类项，得到：<br>
+        $$\sin 2\alpha = 2\sin\alpha\cos\alpha$$
+      </div>
+    </div>
+    <button class="btn" onclick="nextStep('sinSteps')">下一步 ▶</button>
+    <button class="btn btn-outline" onclick="resetSteps('sinSteps')">↺ 重置</button>
+
+    <h3>2. 余弦二倍角公式</h3>
+    <div class="step-box" id="cosSteps">
+      <div class="step active">
+        从两角和的余弦公式出发：<br>
+        $$\cos(\alpha + \beta) = \cos\alpha\cos\beta - \sin\alpha\sin\beta$$
+      </div>
+      <div class="step">
+        令 $\beta = \alpha$，则：<br>
+        $$\cos(\alpha + \alpha) = \cos\alpha\cos\alpha - \sin\alpha\sin\alpha$$
+      </div>
+      <div class="step">
+        化简得第一种形式：<br>
+        $$\cos 2\alpha = \cos^2\alpha - \sin^2\alpha$$
+      </div>
+      <div class="step">
+        利用 $\sin^2\alpha + \cos^2\alpha = 1$ 进行代换：<br>
+        $$\cos 2\alpha = 2\cos^2\alpha - 1 = 1 - 2\sin^2\alpha$$
+      </div>
+      <div class="step">
+        因此余弦二倍角公式有三种常用形式：<br>
+        $$\cos 2\alpha = \cos^2\alpha - \sin^2\alpha = 2\cos^2\alpha - 1 = 1 - 2\sin^2\alpha$$
+      </div>
+    </div>
+    <button class="btn" onclick="nextStep('cosSteps')">下一步 ▶</button>
+    <button class="btn btn-outline" onclick="resetSteps('cosSteps')">↺ 重置</button>
+
+    <h3>3. 正切二倍角公式</h3>
+    <div class="step-box" id="tanSteps">
+      <div class="step active">
+        从两角和的正切公式出发：<br>
+        $$\tan(\alpha + \beta) = \frac{\tan\alpha + \tan\beta}{1 - \tan\alpha\tan\beta}$$
+      </div>
+      <div class="step">
+        令 $\beta = \alpha$，则：<br>
+        $$\tan(\alpha + \alpha) = \frac{\tan\alpha + \tan\alpha}{1 - \tan\alpha\tan\alpha}$$
+      </div>
+      <div class="step">
+        化简得：<br>
+        $$\tan 2\alpha = \frac{2\tan\alpha}{1 - \tan^2\alpha}$$
+        <p class="hint">注意：此式成立的前提是 $\tan\alpha$ 有意义，即 $\alpha \neq \frac{\pi}{2} + k\pi$。</p>
+      </div>
+    </div>
+    <button class="btn" onclick="nextStep('tanSteps')">下一步 ▶</button>
+    <button class="btn btn-outline" onclick="resetSteps('tanSteps')">↺ 重置</button>
+
+    <div class="formula-box">
+      <p><strong>二倍角公式总结</strong></p>
+      <p>$$\sin 2\alpha = 2\sin\alpha\cos\alpha$$</p>
+      <p>$$\cos 2\alpha = \cos^2\alpha - \sin^2\alpha = 2\cos^2\alpha - 1 = 1 - 2\sin^2\alpha$$</p>
+      <p>$$\tan 2\alpha = \frac{2\tan\alpha}{1 - \tan^2\alpha}$$</p>
+    </div>
+
+    <h3>4. 半角公式（探究与发现）</h3>
+    <div class="step-box" id="halfSteps">
+      <div class="step active">
+        由 $\cos 2\alpha = 1 - 2\sin^2\alpha$，可得：<br>
+        $$\sin^2\alpha = \frac{1 - \cos 2\alpha}{2}$$
+      </div>
+      <div class="step">
+        将 $\alpha$ 替换为 $\frac{\alpha}{2}$：<br>
+        $$\sin^2\frac{\alpha}{2} = \frac{1 - \cos\alpha}{2}$$
+      </div>
+      <div class="step">
+        同理，由 $\cos 2\alpha = 2\cos^2\alpha - 1$，可得：<br>
+        $$\cos^2\frac{\alpha}{2} = \frac{1 + \cos\alpha}{2}$$
+      </div>
+      <div class="step">
+        因此得到半角公式：<br>
+        $$\sin\frac{\alpha}{2} = \pm\sqrt{\frac{1 - \cos\alpha}{2}}$$<br>
+        $$\cos\frac{\alpha}{2} = \pm\sqrt{\frac{1 + \cos\alpha}{2}}$$
+        <p class="hint">“$\pm$”由 $\frac{\alpha}{2}$ 所在象限决定。</p>
+      </div>
+    </div>
+    <button class="btn" onclick="nextStep('halfSteps')">下一步 ▶</button>
+    <button class="btn btn-outline" onclick="resetSteps('halfSteps')">↺ 重置</button>
+  </div>
+</section>
+
+<!-- 第二部分：典型例题 -->
+<section>
+  <div class="section-title">二、典型例题（答案点击按钮显示）</div>
+  <div class="content">
+
+    <div class="problem">
+      <div class="problem-title">例 1</div>
+      <p>已知 $\sin\alpha = \dfrac{4}{5}$，$\alpha$ 是第二象限角，求 $\sin 2\alpha$、$\cos 2\alpha$ 和 $\tan 2\alpha$ 的值。</p>
+      <button class="btn btn-accent" onclick="toggleSolution('ex1')">显示答案与解析</button>
+      <div class="solution" id="ex1">
+        <div class="idea"><strong>思路：</strong>先由同角关系求 $\cos\alpha$（注意象限定符号），再套用二倍角公式；求 $\tan 2\alpha$ 可先求 $\tan\alpha$ 再用正切二倍角公式。</div>
+        <div class="solution-title">解答：</div>
+        <p>因为 $\alpha$ 是第二象限角，所以 $\cos\alpha < 0$。</p>
+        <p>$$\cos\alpha = -\sqrt{1 - \sin^2\alpha} = -\sqrt{1 - \left(\frac{4}{5}\right)^2} = -\frac{3}{5}$$</p>
+        <p>$$\sin 2\alpha = 2\sin\alpha\cos\alpha = 2 \times \frac{4}{5} \times \left(-\frac{3}{5}\right) = -\frac{24}{25}$$</p>
+        <p>$$\cos 2\alpha = 1 - 2\sin^2\alpha = 1 - 2 \times \left(\frac{4}{5}\right)^2 = -\frac{7}{25}$$</p>
+        <p>$$\tan\alpha = \frac{\sin\alpha}{\cos\alpha} = -\frac{4}{3}$$</p>
+        <p>$$\tan 2\alpha = \frac{2\tan\alpha}{1 - \tan^2\alpha} = \frac{2 \times (-\frac{4}{3})}{1 - (-\frac{4}{3})^2} = \frac{24}{7}$$</p>
+        <p class="answer-highlight">答案：$\sin 2\alpha = -\dfrac{24}{25}$，$\cos 2\alpha = -\dfrac{7}{25}$，$\tan 2\alpha = \dfrac{24}{7}$。</p>
+      </div>
+    </div>
+
+    <div class="problem">
+      <div class="problem-title">例 2</div>
+      <p>已知 $\cos\dfrac{\theta}{2} = -\dfrac{1}{3}$，且 $\theta \in (\pi, 2\pi)$，求 $\sin\theta$ 和 $\cos\theta$ 的值。</p>
+      <button class="btn btn-accent" onclick="toggleSolution('ex2')">显示答案与解析</button>
+      <div class="solution" id="ex2">
+        <div class="idea"><strong>思路：</strong>由 $\theta$ 的范围确定 $\dfrac{\theta}{2}$ 的象限，从而确定 $\sin\dfrac{\theta}{2}$ 的符号；再利用二倍角公式把 $\theta$ 看成 $2 \times \dfrac{\theta}{2}$ 求解。</div>
+        <div class="solution-title">解答：</div>
+        <p>由 $\theta \in (\pi, 2\pi)$，可知 $\dfrac{\theta}{2} \in \left(\dfrac{\pi}{2}, \pi\right)$，故 $\sin\dfrac{\theta}{2} > 0$。</p>
+        <p>$$\sin\frac{\theta}{2} = \sqrt{1 - \cos^2\frac{\theta}{2}} = \sqrt{1 - \left(-\frac{1}{3}\right)^2} = \frac{2\sqrt{2}}{3}$$</p>
+        <p>$$\sin\theta = 2\sin\frac{\theta}{2}\cos\frac{\theta}{2} = 2 \times \frac{2\sqrt{2}}{3} \times \left(-\frac{1}{3}\right) = -\frac{4\sqrt{2}}{9}$$</p>
+        <p>$$\cos\theta = 2\cos^2\frac{\theta}{2} - 1 = 2 \times \left(-\frac{1}{3}\right)^2 - 1 = -\frac{7}{9}$$</p>
+        <p class="answer-highlight">答案：$\sin\theta = -\dfrac{4\sqrt{2}}{9}$，$\cos\theta = -\dfrac{7}{9}$。</p>
+      </div>
+    </div>
+
+    <div class="problem">
+      <div class="problem-title">例 3</div>
+      <p>化简：$\dfrac{\sin 2\alpha + \sin\alpha}{2\cos 2\alpha + 2\sin^2\alpha + \cos\alpha}$。</p>
+      <button class="btn btn-accent" onclick="toggleSolution('ex3')">显示答案与解析</button>
+      <div class="solution" id="ex3">
+        <div class="idea"><strong>思路：</strong>分子分母分别用二倍角公式展开，再提取公因式约分；注意 $\cos 2\alpha$ 选择消去 $\sin^2\alpha$ 的形式更方便。</div>
+        <div class="solution-title">解答：</div>
+        <p>$$\text{原式} = \frac{2\sin\alpha\cos\alpha + \sin\alpha}{2(\cos^2\alpha - \sin^2\alpha) + 2\sin^2\alpha + \cos\alpha}$$</p>
+        <p>$$= \frac{\sin\alpha(2\cos\alpha + 1)}{2\cos^2\alpha - 2\sin^2\alpha + 2\sin^2\alpha + \cos\alpha}$$</p>
+        <p>$$= \frac{\sin\alpha(2\cos\alpha + 1)}{2\cos^2\alpha + \cos\alpha}$$</p>
+        <p>$$= \frac{\sin\alpha(2\cos\alpha + 1)}{\cos\alpha(2\cos\alpha + 1)} = \frac{\sin\alpha}{\cos\alpha} = \tan\alpha$$</p>
+        <p class="answer-highlight">答案：$\tan\alpha$。</p>
+      </div>
+    </div>
+
+    <div class="problem">
+      <div class="problem-title">例 4</div>
+      <p>证明：$\tan\theta = \dfrac{1 - \cos 2\theta}{\sin 2\theta}$。</p>
+      <button class="btn btn-accent" onclick="toggleSolution('ex4')">显示答案与解析</button>
+      <div class="solution" id="ex4">
+        <div class="idea"><strong>思路：</strong>从右边出发，把 $\cos 2\theta$ 化为 $1 - 2\sin^2\theta$ 消去常数，再约分。</div>
+        <div class="solution-title">证明：</div>
+        <p>$$\text{右边} = \frac{1 - \cos 2\theta}{\sin 2\theta} = \frac{1 - (1 - 2\sin^2\theta)}{2\sin\theta\cos\theta}$$</p>
+        <p>$$= \frac{2\sin^2\theta}{2\sin\theta\cos\theta} = \frac{\sin\theta}{\cos\theta} = \tan\theta = \text{左边}$$</p>
+        <p>所以原等式成立。</p>
+        <p class="answer-highlight">证毕。</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- 第三部分：练习 6.2 -->
+<section>
+  <div class="section-title">三、练习 6.2（答案与思路点击按钮显示）</div>
+  <div class="content">
+
+    <div class="problem">
+      <div class="problem-title">练习 6.2 第 1 题</div>
+      <p>求下列各式的值：</p>
+      <p>(1) $2\sin 15^\circ\cos 15^\circ$；　(2) $2\cos^2\dfrac{\pi}{12} - 1$；</p>
+      <p>(3) $1 - 2\sin^2\dfrac{5\pi}{12}$；　(4) $\dfrac{2\tan\dfrac{\pi}{8}}{1 - \tan^2\dfrac{\pi}{8}}$。</p>
+      <button class="btn btn-accent" onclick="toggleSolution('prac1')">显示答案与解析</button>
+      <div class="solution" id="prac1">
+        <div class="idea"><strong>思路：</strong>四个小题分别对应正弦、余弦、正切的二倍角公式的“逆向”使用，关键是把式子看成 $2\alpha$ 的形式。</div>
+        <div class="solution-title">解答：</div>
+        <p>(1) $2\sin 15^\circ\cos 15^\circ = \sin 30^\circ = \dfrac{1}{2}$</p>
+        <p>(2) $2\cos^2\dfrac{\pi}{12} - 1 = \cos\dfrac{\pi}{6} = \dfrac{\sqrt{3}}{2}$</p>
+        <p>(3) $1 - 2\sin^2\dfrac{5\pi}{12} = \cos\dfrac{5\pi}{6} = -\dfrac{\sqrt{3}}{2}$</p>
+        <p>(4) $\dfrac{2\tan\dfrac{\pi}{8}}{1 - \tan^2\dfrac{\pi}{8}} = \tan\dfrac{\pi}{4} = 1$</p>
+        <p class="answer-highlight">答案：(1) $\dfrac{1}{2}$；(2) $\dfrac{\sqrt{3}}{2}$；(3) $-\dfrac{\sqrt{3}}{2}$；(4) $1$。</p>
+      </div>
+    </div>
+
+    <div class="problem">
+      <div class="problem-title">练习 6.2 第 2 题</div>
+      <p>已知 $\cos\alpha = \dfrac{4}{5}$，$\alpha$ 是第四象限角，求 $\sin 2\alpha$、$\cos 2\alpha$ 和 $\tan 2\alpha$ 的值。</p>
+      <button class="btn btn-accent" onclick="toggleSolution('prac2')">显示答案与解析</button>
+      <div class="solution" id="prac2">
+        <div class="idea"><strong>思路：</strong>第四象限中 $\sin\alpha < 0$，先求 $\sin\alpha$，再用二倍角公式；求 $\tan 2\alpha$ 可先求 $\tan\alpha$。</div>
+        <div class="solution-title">解答：</div>
+        <p>因为 $\alpha$ 是第四象限角，所以 $\sin\alpha = -\sqrt{1 - \cos^2\alpha} = -\sqrt{1 - \dfrac{16}{25}} = -\dfrac{3}{5}$。</p>
+        <p>$$\sin 2\alpha = 2\sin\alpha\cos\alpha = 2 \times \left(-\frac{3}{5}\right) \times \frac{4}{5} = -\frac{24}{25}$$</p>
+        <p>$$\cos 2\alpha = 2\cos^2\alpha - 1 = 2 \times \frac{16}{25} - 1 = \frac{7}{25}$$</p>
+        <p>$$\tan\alpha = \frac{\sin\alpha}{\cos\alpha} = -\frac{3}{4}$$</p>
+        <p>$$\tan 2\alpha = \frac{2\tan\alpha}{1 - \tan^2\alpha} = \frac{2 \times (-\frac{3}{4})}{1 - \frac{9}{16}} = -\frac{24}{7}$$</p>
+        <p class="answer-highlight">答案：$\sin 2\alpha = -\dfrac{24}{25}$，$\cos 2\alpha = \dfrac{7}{25}$，$\tan 2\alpha = -\dfrac{24}{7}$。</p>
+      </div>
+    </div>
+
+    <div class="problem">
+      <div class="problem-title">练习 6.2 第 3 题</div>
+      <p>已知 $\sin\dfrac{\theta}{2} = \dfrac{4}{5}$，$\theta \in (0, \pi)$，求 $\sin\theta$ 和 $\cos\theta$ 的值。</p>
+      <button class="btn btn-accent" onclick="toggleSolution('prac3')">显示答案与解析</button>
+      <div class="solution" id="prac3">
+        <div class="idea"><strong>思路：</strong>由 $\theta$ 的范围可知 $\dfrac{\theta}{2}$ 在第一象限，故 $\cos\dfrac{\theta}{2} > 0$；把 $\theta$ 看成 $2 \times \dfrac{\theta}{2}$ 使用二倍角公式。</div>
+        <div class="solution-title">解答：</div>
+        <p>由 $\theta \in (0, \pi)$，可知 $\dfrac{\theta}{2} \in \left(0, \dfrac{\pi}{2}\right)$，故 $\cos\dfrac{\theta}{2} > 0$。</p>
+        <p>$$\cos\frac{\theta}{2} = \sqrt{1 - \sin^2\frac{\theta}{2}} = \sqrt{1 - \frac{16}{25}} = \frac{3}{5}$$</p>
+        <p>$$\sin\theta = 2\sin\frac{\theta}{2}\cos\frac{\theta}{2} = 2 \times \frac{4}{5} \times \frac{3}{5} = \frac{24}{25}$$</p>
+        <p>$$\cos\theta = 1 - 2\sin^2\frac{\theta}{2} = 1 - 2 \times \frac{16}{25} = -\frac{7}{25}$$</p>
+        <p class="answer-highlight">答案：$\sin\theta = \dfrac{24}{25}$，$\cos\theta = -\dfrac{7}{25}$。</p>
+      </div>
+    </div>
+
+    <div class="problem">
+      <div class="problem-title">练习 6.2 第 4 题</div>
+      <p>化简：</p>
+      <p>(1) $\sin\dfrac{\theta}{2}\cos\dfrac{\theta}{2}$；　(2) $\cos^4\alpha - \sin^4\alpha$；</p>
+      <p>(3) $(\cos\alpha - \sin\alpha)^2$；　(4) $\dfrac{1}{1 - \tan\alpha} - \dfrac{1}{1 + \tan\alpha}$。</p>
+      <button class="btn btn-accent" onclick="toggleSolution('prac4')">显示答案与解析</button>
+      <div class="solution" id="prac4">
+        <div class="idea"><strong>思路：</strong>(1) 逆用 $\sin 2\alpha = 2\sin\alpha\cos\alpha$；(2) 用平方差公式后再用 $\cos 2\alpha$；(3) 展开后用 $\sin 2\alpha$；(4) 通分后逆用正切二倍角公式。</div>
+        <div class="solution-title">解答：</div>
+        <p>(1) $\sin\dfrac{\theta}{2}\cos\dfrac{\theta}{2} = \dfrac{1}{2}\sin\theta$</p>
+        <p>(2) $\cos^4\alpha - \sin^4\alpha = (\cos^2\alpha - \sin^2\alpha)(\cos^2\alpha + \sin^2\alpha) = \cos 2\alpha$</p>
+        <p>(3) $(\cos\alpha - \sin\alpha)^2 = \cos^2\alpha - 2\sin\alpha\cos\alpha + \sin^2\alpha = 1 - \sin 2\alpha$</p>
+        <p>(4) $\dfrac{1}{1 - \tan\alpha} - \dfrac{1}{1 + \tan\alpha} = \dfrac{(1 + \tan\alpha) - (1 - \tan\alpha)}{(1 - \tan\alpha)(1 + \tan\alpha)} = \dfrac{2\tan\alpha}{1 - \tan^2\alpha} = \tan 2\alpha$</p>
+        <p class="answer-highlight">答案：(1) $\dfrac{1}{2}\sin\theta$；(2) $\cos 2\alpha$；(3) $1 - \sin 2\alpha$；(4) $\tan 2\alpha$。</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- 习题 6.2 A 组 -->
+<section>
+  <div class="section-title">三、习题 6.2 · A 组 知识巩固</div>
+  <div class="content">
+
+    <div class="problem">
+      <div class="problem-title">A 组 第 1 题</div>
+      <p>求下列各式的值：</p>
+      <p>(1) $\sin 75^\circ\cos 75^\circ$；　(2) $\cos^2 15^\circ - \sin^2 15^\circ$。</p>
+      <button class="btn btn-accent" onclick="toggleSolution('a1')">显示答案与解析</button>
+      <div class="solution" id="a1">
+        <div class="idea"><strong>思路：</strong>(1) 先乘以 2 再除以 2，凑成 $\sin 2\alpha$；(2) 直接逆用 $\cos 2\alpha = \cos^2\alpha - \sin^2\alpha$。</div>
+        <div class="solution-title">解答：</div>
+        <p>(1) $\sin 75^\circ\cos 75^\circ = \dfrac{1}{2} \times 2\sin 75^\circ\cos 75^\circ = \dfrac{1}{2}\sin 150^\circ = \dfrac{1}{2} \times \dfrac{1}{2} = \dfrac{1}{4}$</p>
+        <p>(2) $\cos^2 15^\circ - \sin^2 15^\circ = \cos 30^\circ = \dfrac{\sqrt{3}}{2}$</p>
+        <p class="answer-highlight">答案：(1) $\dfrac{1}{4}$；(2) $\dfrac{\sqrt{3}}{2}$。</p>
+      </div>
+    </div>
+
+    <div class="problem">
+      <div class="problem-title">A 组 第 2 题</div>
+      <p>已知 $\sin\alpha = -\dfrac{12}{13}$，$\alpha$ 是第三象限角，求 $\sin 2\alpha$、$\cos 2\alpha$ 和 $\tan 2\alpha$ 的值。</p>
+      <button class="btn btn-accent" onclick="toggleSolution('a2')">显示答案与解析</button>
+      <div class="solution" id="a2">
+        <div class="idea"><strong>思路：</strong>第三象限中 $\cos\alpha < 0$，先求 $\cos\alpha$，再套用二倍角公式。</div>
+        <div class="solution-title">解答：</div>
+        <p>因为 $\alpha$ 是第三象限角，所以 $\cos\alpha = -\sqrt{1 - \sin^2\alpha} = -\sqrt{1 - \dfrac{144}{169}} = -\dfrac{5}{13}$。</p>
+        <p>$$\sin 2\alpha = 2\sin\alpha\cos\alpha = 2 \times \left(-\frac{12}{13}\right) \times \left(-\frac{5}{13}\right) = \frac{120}{169}$$</p>
+        <p>$$\cos 2\alpha = 1 - 2\sin^2\alpha = 1 - 2 \times \frac{144}{169} = -\frac{119}{169}$$</p>
+        <p>$$\tan\alpha = \frac{\sin\alpha}{\cos\alpha} = \frac{12}{5}$$</p>
+        <p>$$\tan 2\alpha = \frac{2\tan\alpha}{1 - \tan^2\alpha} = \frac{\frac{24}{5}}{1 - \frac{144}{25}} = -\frac{120}{119}$$</p>
+        <p class="answer-highlight">答案：$\sin 2\alpha = \dfrac{120}{169}$，$\cos 2\alpha = -\dfrac{119}{169}$，$\tan 2\alpha = -\dfrac{120}{119}$。</p>
+      </div>
+    </div>
+
+    <div class="problem">
+      <div class="problem-title">A 组 第 3 题</div>
+      <p>化简：</p>
+      <p>(1) $2\sin(\pi + \alpha)\cos(\pi - \alpha)$；　(2) $\dfrac{1 + \sin 2\theta}{\sin\theta + \cos\theta}$；</p>
+      <p>(3) $1 + 2\cos^2\theta - \cos 2\theta$；　(4) $1 + \cos\alpha + 2\sin^2\dfrac{\alpha}{2}$。</p>
+      <button class="btn btn-accent" onclick="toggleSolution('a3')">显示答案与解析</button>
+      <div class="solution" id="a3">
+        <div class="idea"><strong>思路：</strong>综合利用诱导公式、二倍角公式及 $1 = \sin^2\theta + \cos^2\theta$ 进行变形化简。</div>
+        <div class="solution-title">解答：</div>
+        <p>(1) $2\sin(\pi + \alpha)\cos(\pi - \alpha) = 2(-\sin\alpha)(-\cos\alpha) = 2\sin\alpha\cos\alpha = \sin 2\alpha$</p>
+        <p>(2) $\dfrac{1 + \sin 2\theta}{\sin\theta + \cos\theta} = \dfrac{\sin^2\theta + \cos^2\theta + 2\sin\theta\cos\theta}{\sin\theta + \cos\theta} = \dfrac{(\sin\theta + \cos\theta)^2}{\sin\theta + \cos\theta} = \sin\theta + \cos\theta$</p>
+        <p>(3) $1 + 2\cos^2\theta - \cos 2\theta = 1 + 2\cos^2\theta - (2\cos^2\theta - 1) = 2$</p>
+        <p>(4) $1 + \cos\alpha + 2\sin^2\dfrac{\alpha}{2} = 1 + \cos\alpha + 2 \times \dfrac{1 - \cos\alpha}{2} = 1 + \cos\alpha + 1 - \cos\alpha = 2$</p>
+        <p class="answer-highlight">答案：(1) $\sin 2\alpha$；(2) $\sin\theta + \cos\theta$；(3) $2$；(4) $2$。</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- 习题 6.2 B 组 -->
+<section>
+  <div class="section-title">三、习题 6.2 · B 组 能力提升</div>
+  <div class="content">
+
+    <div class="problem">
+      <div class="problem-title">B 组 第 1 题</div>
+      <p>已知 $\cos\dfrac{\alpha}{2} = -\dfrac{3}{5}$，$\alpha \in \left(\pi, \dfrac{3\pi}{2}\right)$，求 $\sin\left(\alpha + \dfrac{\pi}{3}\right)$ 的值。</p>
+      <button class="btn btn-accent" onclick="toggleSolution('b1')">显示答案与解析</button>
+      <div class="solution" id="b1">
+        <div class="idea"><strong>思路：</strong>先由 $\alpha$ 的范围确定 $\dfrac{\alpha}{2}$ 在第二象限，求出 $\sin\dfrac{\alpha}{2}$；再用二倍角公式求 $\sin\alpha$、$\cos\alpha$；最后用和角公式展开。</div>
+        <div class="solution-title">解答：</div>
+        <p>由 $\alpha \in \left(\pi, \dfrac{3\pi}{2}\right)$，可知 $\dfrac{\alpha}{2} \in \left(\dfrac{\pi}{2}, \dfrac{3\pi}{4}\right)$，故 $\sin\dfrac{\alpha}{2} > 0$。</p>
+        <p>$$\sin\frac{\alpha}{2} = \sqrt{1 - \frac{9}{25}} = \frac{4}{5}$$</p>
+        <p>$$\sin\alpha = 2 \times \frac{4}{5} \times \left(-\frac{3}{5}\right) = -\frac{24}{25}$$</p>
+        <p>$$\cos\alpha = 2\cos^2\frac{\alpha}{2} - 1 = 2 \times \frac{9}{25} - 1 = -\frac{7}{25}$$</p>
+        <p>$$\sin\left(\alpha + \frac{\pi}{3}\right) = \sin\alpha\cos\frac{\pi}{3} + \cos\alpha\sin\frac{\pi}{3}$$</p>
+        <p>$$= \left(-\frac{24}{25}\right) \times \frac{1}{2} + \left(-\frac{7}{25}\right) \times \frac{\sqrt{3}}{2} = -\frac{24 + 7\sqrt{3}}{50}$$</p>
+        <p class="answer-highlight">答案：$-\dfrac{24 + 7\sqrt{3}}{50}$。</p>
+      </div>
+    </div>
+
+    <div class="problem">
+      <div class="problem-title">B 组 第 2 题</div>
+      <p>证明：</p>
+      <p>(1) $\sin\theta(1 + \cos 2\theta) = \sin 2\theta\cos\theta$；</p>
+      <p>(2) $\dfrac{1 - \cos 2\theta + \sin 2\theta}{1 + \cos 2\theta + \sin 2\theta} = \tan\theta$。</p>
+      <button class="btn btn-accent" onclick="toggleSolution('b2')">显示答案与解析</button>
+      <div class="solution" id="b2">
+        <div class="idea"><strong>思路：</strong>(1) 把 $\cos 2\theta$ 换成 $2\cos^2\theta$；(2) 分子分母分别用 $1 - \cos 2\theta = 2\sin^2\theta$、$1 + \cos 2\theta = 2\cos^2\theta$ 化简，再约分。</div>
+        <div class="solution-title">证明：</div>
+        <p>(1) 左边 $= \sin\theta \times 2\cos^2\theta = 2\sin\theta\cos^2\theta$</p>
+        <p>右边 $= 2\sin\theta\cos\theta \times \cos\theta = 2\sin\theta\cos^2\theta$</p>
+        <p>左边 $=$ 右边，原等式成立。</p>
+        <p>(2) 左边 $= \dfrac{2\sin^2\theta + 2\sin\theta\cos\theta}{2\cos^2\theta + 2\sin\theta\cos\theta} = \dfrac{2\sin\theta(\sin\theta + \cos\theta)}{2\cos\theta(\cos\theta + \sin\theta)} = \dfrac{\sin\theta}{\cos\theta} = \tan\theta = $ 右边</p>
+        <p>原等式成立。</p>
+        <p class="answer-highlight">证毕。</p>
+      </div>
+    </div>
+
+    <div class="problem">
+      <div class="problem-title">B 组 第 3 题</div>
+      <p>已知点 $P(3, 4)$ 是角 $\alpha$ 终边上的一点，求 $\cos\left(\dfrac{\pi}{3} + 2\alpha\right)$ 的值。</p>
+      <button class="btn btn-accent" onclick="toggleSolution('b3')">显示答案与解析</button>
+      <div class="solution" id="b3">
+        <div class="idea"><strong>思路：</strong>先由点的坐标求 $\sin\alpha$、$\cos\alpha$；再用二倍角公式求 $\sin 2\alpha$、$\cos 2\alpha$；最后用和角公式展开。</div>
+        <div class="solution-title">解答：</div>
+        <p>$$r = \sqrt{3^2 + 4^2} = 5$$</p>
+        <p>$$\sin\alpha = \frac{4}{5},\quad \cos\alpha = \frac{3}{5}$$</p>
+        <p>$$\sin 2\alpha = 2 \times \frac{4}{5} \times \frac{3}{5} = \frac{24}{25}$$</p>
+        <p>$$\cos 2\alpha = 2\cos^2\alpha - 1 = 2 \times \frac{9}{25} - 1 = -\frac{7}{25}$$</p>
+        <p>$$\cos\left(\frac{\pi}{3} + 2\alpha\right) = \cos\frac{\pi}{3}\cos 2\alpha - \sin\frac{\pi}{3}\sin 2\alpha$$</p>
+        <p>$$= \frac{1}{2} \times \left(-\frac{7}{25}\right) - \frac{\sqrt{3}}{2} \times \frac{24}{25} = -\frac{7 + 24\sqrt{3}}{50}$$</p>
+        <p class="answer-highlight">答案：$-\dfrac{7 + 24\sqrt{3}}{50}$。</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- C 组 -->
+<section>
+  <div class="section-title">三、习题 6.2 · C 组 学以致用</div>
+  <div class="content">
+
+    <div class="problem">
+      <div class="problem-title">C 组 思考题</div>
+      <p>小明在解决某个数学问题时，误将 $\cos^2\alpha$ 写成了 $\cos 2\alpha$，但最终答案是正确的。请你想一想，$\alpha$ 可能是什么角？</p>
+      <button class="btn btn-accent" onclick="toggleSolution('c1')">显示答案与解析</button>
+      <div class="solution" id="c1">
+        <div class="idea"><strong>思路：</strong>“答案正确”意味着 $\cos^2\alpha = \cos 2\alpha$。把 $\cos 2\alpha$ 用 $2\cos^2\alpha - 1$ 表示，解方程即可。</div>
+        <div class="solution-title">解答：</div>
+        <p>由题意，需满足：</p>
+        <p>$$\cos^2\alpha = \cos 2\alpha$$</p>
+        <p>代入二倍角公式：</p>
+        <p>$$\cos^2\alpha = 2\cos^2\alpha - 1$$</p>
+        <p>$$\cos^2\alpha = 1$$</p>
+        <p>$$\cos\alpha = \pm 1$$</p>
+        <p>因此 $\alpha = k\pi$（$k \in \mathbb{Z}$）。</p>
+        <p class="answer-highlight">答案：$\alpha = k\pi$，$k \in \mathbb{Z}$。</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- 第四部分：课堂小结 -->
+<section>
+  <div class="section-title">四、课堂小结与做题技巧</div>
+  <div class="content">
+    <div class="summary-grid">
+      <div class="summary-card">
+        <h4>1. 公式结构</h4>
+        <ul>
+          <li>$\sin 2\alpha = 2\sin\alpha\cos\alpha$</li>
+          <li>$\cos 2\alpha$ 三种形式灵活选用</li>
+          <li>$\tan 2\alpha = \dfrac{2\tan\alpha}{1 - \tan^2\alpha}$</li>
+        </ul>
+      </div>
+      <div class="summary-card">
+        <h4>2. 适用条件</h4>
+        <ul>
+          <li>正切公式要求 $\tan\alpha$ 有意义</li>
+          <li>开方时必须先确定角的象限</li>
+          <li>半角公式中“$\pm$”看 $\dfrac{\alpha}{2}$ 所在象限</li>
+        </ul>
+      </div>
+      <div class="summary-card">
+        <h4>3. 常见配凑</h4>
+        <ul>
+          <li>$\alpha = 2 \times \dfrac{\alpha}{2}$（半角变倍角）</li>
+          <li>$1 = \sin^2\theta + \cos^2\theta$</li>
+          <li>$1 \pm \sin 2\theta = (\sin\theta \pm \cos\theta)^2$</li>
+        </ul>
+      </div>
+      <div class="summary-card">
+        <h4>4. 解题技巧</h4>
+        <ul>
+          <li>先定象限，再定符号</li>
+          <li>遇“$1$”常配成平方和</li>
+          <li>化简时先展开二倍角，再因式分解</li>
+          <li>证明题从复杂的一边化向简单的一边</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<script>
+  function nextStep(id) {
+    const box = document.getElementById(id);
+    const steps = box.querySelectorAll('.step');
+    for (let i = 0; i < steps.length - 1; i++) {
+      if (steps[i].classList.contains('active')) {
+        steps[i].classList.remove('active');
+        steps[i + 1].classList.add('active');
+        if (window.MathJax) MathJax.typesetPromise([steps[i + 1]]);
+        break;
+      }
+    }
+  }
+  function resetSteps(id) {
+    const box = document.getElementById(id);
+    const steps = box.querySelectorAll('.step');
+    steps.forEach((s, i) => {
+      s.classList.toggle('active', i === 0);
+    });
+  }
+  function toggleSolution(id) {
+    const el = document.getElementById(id);
+    el.classList.toggle('show');
+    if (el.classList.contains('show') && window.MathJax) {
+      MathJax.typesetPromise([el]);
+    }
+  }
+</script>
+</body>
+</html>

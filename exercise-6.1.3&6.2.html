@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第6章 三角计算 · 讲评练习</title>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$', '$$'], ['\\[', '\\]']]
+  },
+  svg: { fontCache: 'global' }
+};
+</script>
+<style>
+  :root {
+    --primary: #2563eb;
+    --primary-light: #dbeafe;
+    --accent: #0d9488;
+    --accent-light: #ccfbf1;
+    --bg: #f8fafc;
+    --card: #ffffff;
+    --text: #1e293b;
+    --muted: #64748b;
+    --border: #e2e8f0;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    margin: 0;
+    padding: 0;
+  }
+  header {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: #fff;
+    padding: 2.5rem 1rem;
+    text-align: center;
+  }
+  header h1 { margin: 0; font-size: 2rem; }
+  header p { margin: 0.5rem 0 0; opacity: 0.95; }
+  main { max-width: 900px; margin: 0 auto; padding: 2rem 1rem; }
+  section {
+    background: var(--card);
+    border-radius: 1rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+  }
+  .section-title {
+    background: var(--primary-light);
+    color: var(--primary);
+    font-size: 1.2rem;
+    font-weight: 700;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .subsection-title {
+    background: var(--accent-light);
+    color: var(--accent);
+    font-size: 1.05rem;
+    font-weight: 700;
+    padding: 0.8rem 1.25rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .content { padding: 1.25rem; }
+  .formula-box {
+    background: var(--primary-light);
+    border-radius: 0.75rem;
+    padding: 1rem;
+    text-align: center;
+    margin: 0.75rem 0;
+  }
+  .formula-box p { margin: 0.35rem 0; }
+  .problem {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 0.75rem;
+    padding: 1rem;
+    margin: 1rem 0;
+  }
+  .problem-title {
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+  }
+  .answer {
+    background: #fff7ed;
+    border-left: 4px solid #f59e0b;
+    padding: 0.6rem 1rem;
+    border-radius: 0 0.5rem 0.5rem 0;
+    margin: 0.75rem 0;
+  }
+  .answer-label { font-weight: 700; color: #b45309; }
+  .solution {
+    background: #f8fafc;
+    border-left: 4px solid var(--accent);
+    padding: 0.75rem 1rem;
+    border-radius: 0 0.5rem 0.5rem 0;
+    margin-top: 0.5rem;
+  }
+  .solution-title {
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+  .highlight { color: #dc2626; font-weight: 700; }
+  ul, ol { margin: 0.5rem 0; padding-left: 1.25rem; }
+  li { margin: 0.3rem 0; }
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+  }
+  .summary-card {
+    background: #f8fafc;
+    border: 1px solid var(--border);
+    border-radius: 0.75rem;
+    padding: 1rem;
+  }
+  .summary-card h4 {
+    margin: 0 0 0.5rem;
+    color: var(--primary);
+  }
+  @media (max-width: 640px) {
+    header h1 { font-size: 1.5rem; }
+    .section-title { font-size: 1rem; }
+    main { padding: 1rem; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>第6章 三角计算 · 讲评练习</h1>
+  <p>6.1 两角和与差的正切公式 &nbsp;|&nbsp; 6.2 二倍角公式</p>
+</header>
+
+<main>
+
+<!-- 6.1 正切和差角公式 -->
+<section>
+  <div class="section-title">6.1 两角和与差的正切公式</div>
+  
+  <div class="content">
+    <div class="formula-box">
+      <p><strong>核心公式</strong></p>
+      <p>$$\tan(\alpha + \beta) = \frac{\tan\alpha + \tan\beta}{1 - \tan\alpha\tan\beta}$$</p>
+      <p>$$\tan(\alpha - \beta) = \frac{\tan\alpha - \tan\beta}{1 + \tan\alpha\tan\beta}$$</p>
+      <p style="font-size:0.9rem;color:var(--muted);">常用技巧：$1 = \tan 45^\circ$，整体代换公式结构。</p>
+    </div>
+  </div>
+
+  <div class="subsection-title">边学边做 2</div>
+  <div class="content">
+    <div class="problem">
+      <div class="problem-title">1</div>
+      <p>计算：$\dfrac{\tan 34^\circ + \tan 26^\circ}{1 - \tan 34^\circ\tan 26^\circ}$。</p>
+      <div class="answer"><span class="answer-label">答案：</span>$\sqrt{3}$</div>
+      <div class="solution">
+        <div class="solution-title">解析</div>
+        <p>原式 $= \tan(34^\circ + 26^\circ) = \tan 60^\circ = \sqrt{3}$。</p>
+      </div>
+    </div>
+    <div class="problem">
+      <div class="problem-title">2</div>
+      <p>计算：$\dfrac{1 - \tan 75^\circ}{1 + \tan 75^\circ}$。</p>
+      <div class="answer"><span class="answer-label">答案：</span>$-\dfrac{\sqrt{3}}{3}$</div>
+      <div class="solution">
+        <div class="solution-title">解析</div>
+        <p>将 $1$ 写成 $\tan 45^\circ$，则</p>
+        <p>原式 $= \dfrac{\tan 45^\circ - \tan 75^\circ}{1 + \tan 45^\circ\tan 75^\circ} = \tan(45^\circ - 75^\circ) = \tan(-30^\circ) = -\dfrac{\sqrt{3}}{3}$。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="subsection-title">巩固提升 · A 组</div>
+  <div class="content">
+    <p style="color:var(--muted);font-weight:700;">（一）选择题</p>
+    <div class="problem">
+      <div class="problem-title">1</div>
+      <p>计算：$\tan 75^\circ = (\quad)$。</p>
+      <p>A. $2 - \sqrt{3}$　B. $-2 - \sqrt{3}$　C. $2 + \sqrt{3}$　D. $-2 + \sqrt{3}$</p>
+      <div class="answer"><span class="answer-label">答案：</span>C</div>
+      <div class="solution">
+        <div class="solution-title">解析</div>
+        <p>$\tan 75^\circ = \tan(45^\circ + 30^\circ) = \dfrac{1 + \frac{\sqrt{3}}{3}}{1 - 1 \times \frac{\sqrt{3}}{3}} = \dfrac{\sqrt{3} + 1}{\sqrt{3} - 1} = \dfrac{(\sqrt{3} + 1)^2}{2} = 2 + \sqrt{3}$。</p>
+      </div>
+    </div>
+    <div class="problem">
+      <div class="problem-title">2</div>
+      <p>已知 $\tan\alpha = 3$，则 $\tan\left(\alpha - \dfrac{\pi}{4}\right) = (\quad)$。</p>
+      <p>A. $-2$　B. $-\dfrac{1}{2}$　C. $\dfrac{1}{2}$　D. $1$</p>
+      <div class="answer"><span class="answer-label">答案：</span>C</div>
+      <div class="solution">
+        <div class="solution-title">解析</div>
+        <p>$\tan\left(\alpha - \dfrac{\pi}{4}\right) = \dfrac{\tan\alpha - \tan\frac{\pi}{4}}{1 + \tan\alpha\tan\frac{\pi}{4}} = \dfrac{3 - 1}{1 + 3} = \dfrac{1}{2}$。</p>
+      </div>
+    </div>
+    <div class="problem">
+      <div class="problem-title">3</div>
+      <p>已知 $\tan\alpha = \dfrac{1}{3}$，$\tan\beta = \dfrac{1}{4}$，则 $\tan(\alpha - \beta) = (\quad)$。</p>
+      <p>A. $\dfrac{7}{11}$　B. $\dfrac{1}{13}$　C. $-\dfrac{1}{13}$　D. $-\dfrac{7}{11}$</p>
+      <div class="answer"><span class="answer-label">答案：</span>B</div>
+      <div class="solution">
+        <div class="solution-title">解析</div>
+        <p>$\tan(\alpha - \beta) = \dfrac{\frac{1}{3} - \frac{1}{4}}{1 + \frac{1}{3} \times \frac{1}{4}} = \dfrac{\frac{1}{12}}{\frac{13}{12}} = \dfrac{1}{13}$。</p>
+      </div>
+    </div>
+    <div class="problem">
+      <div class="problem-title">4</div>
+      <p>计算：$\dfrac{\tan 18^\circ + \tan 42^\circ}{1 - \tan 42^\circ\tan 18^\circ} = (\quad)$。</p>
+      <p>A. $\dfrac{\sqrt{3}}{3}$　B. $\dfrac{\sqrt{2}}{2}$　C. $\dfrac{\sqrt{3}}{2}$　D. $\sqrt{3}$</p>
+      <div class="answer"><span class="answer-label">答案：</span>D</div>
+      <div class="solution">
+        <div class="solution-title">解析</div>
+        <p>原式 $= \tan(18^\circ + 42^\circ) = \tan 60^\circ = \sqrt{3}$。</p>
+      </div>
+    </div>
+
+    <p style="color:var(--muted);font-weight:700;margin-top:1.5rem;">（二）填空题</p>
+    <div class="problem">
+      <div class="problem-title">1</div>
+      <p>计算：$\dfrac{\tan 95^\circ - \tan 35^\circ}{1 + \tan 95^\circ\tan 35^\circ} = \_\_\_\_\_\_\_$。</p>
+      <div class="answer"><span class="answer-label">答案：</span>$\sqrt{3}$</div>
+      <div class="solution">
+        <div class="solution-title">解析</div>
+        <p>原式 $= \tan(95^\circ - 35^\circ) = \tan 60^\circ = \sqrt{3}$。</p>
+      </div>
+    </div>
+    <div class="problem">
+      <div class="problem-title">2</div>
+      <p>计算：$\tan 105^\circ = \_\_\_\_\_\_\_$。</p>
+      <div class="answer"><span class="answer-label">答案：</span>$-2 - \sqrt{3}$</div>
+      <div class="solution">
+        <div class="solution-title">解析</div>
+        <p>$\tan 105^\circ = \tan(60^\circ + 45^\circ) = \dfrac{\sqrt{3} + 1}{1 - \sqrt{3}} = \dfrac{(\sqrt{3} + 1)^2}{1 - 3} = -2 - \sqrt{3}$。</p>
+      </div>
+    </div>
+
+    <p style="color:var(--muted);font-weight:700;margin-top:1.5rem;">（三）解答题</p>
+    <div class="problem">
+      <div class="problem-title">1</div>
+      <p>求 $\tan 165^\circ$ 的值。</p>
+      <div class="answer"><span class="answer-label">答案：</span>$\sqrt{3} - 2$</div>
+      <div class="solution">
+        <div class="solution-title">解析</div>
+        <p>$\tan 165^\circ = \tan(180^\circ - 15^\circ) = -\tan 15^\circ = -(2 - \sqrt{3}) = \sqrt{3} - 2$。</p>
+      </div>
+    </div>
+    <div class="problem">
+      <div class="problem-title">2</div>
+      <p>已知 $\tan\left(\alpha + \dfrac{\pi}{4}\right) = 3$，求 $\tan\alpha$ 的值。</p>
+      <div class="answer"><span class="answer-label">答案：</span>$\dfrac{1}{2}$</div>
+      <div class="solution">
+        <div class="solution-title">解析</div>
+        <p>由 $\tan\left(\alpha + \dfrac{\pi}{4}\right) = \dfrac{\tan\alpha + 1}{1 - \tan\alpha} = 3$，</p>
+        <p>得 $\tan\alpha + 1 = 3 - 3\tan\alpha$，即 $4\tan\alpha = 2$，所以 $\tan\alpha = \dfrac{1}{2}$。</p>
+      </div>
+    </div>
+    <div class="problem">
+      <div class="problem-title">3</div>
+      <p>已知 $\sin\alpha = \dfrac{3}{5}$，$\alpha \in \left(\dfrac{\pi}{2}, \pi\right)$，$\tan\beta = \dfrac{1}{2}$，求 $\tan(\alpha - \beta)$ 的值。</p>
+      <div class="answer"><span class="answer-label">答案：</span>$-2$</div>
+      <div class="solution">
+        <div class="solution-title">解析</div>
+        <p>因为 $\alpha \in \left(\dfrac{\pi}{2}, \pi\right)$，所以 $\cos\alpha = -\sqrt{1 - \frac{9}{25}} = -\dfrac{4}{5}$，$\tan\alpha = -\dfrac{3}{4}$。</p>
+        <p>$\tan(\alpha - \beta) = \dfrac{-\frac{3}{4} - \frac{1}{2}}{1 + (-\frac{3}{4}) \times \frac{1}{2}} = \dfrac{-\frac{5}{4}}{\frac{5}{8}} = -2$。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="subsection-title">巩固提升 · B 组</div>
+  <div class="content">
+    <p style="color:var(--muted);font-weight:700;">（一）选择题</p>
+    <div class="problem">
+      <div class="problem-title">1</div>
+      <p>已知 $\tan\alpha$，$\tan\beta$ 是方程 $x^2 - (1 + \sqrt{3})x + \sqrt{3} = 0$ 的两个实数根，则 $\tan(\alpha + \beta) = (\quad)$。</p>
+      <p>A. $-2 - \sqrt{3}$　B. $-2 + \sqrt{3}$　C. $2 - \sqrt{3}$　D. $2 + \sqrt{3}$</p>
+      <div class="answer"><span class="answer-label">答案：</span>A</div>
+      <div class="solution">
+        <div class="solution-title">解析</div>
+        <p>由韦达定理：$\tan\alpha + \tan\beta = 1 + \sqrt{3}$，$\tan\alpha\tan\beta = \sqrt{3}$。</p>
+        <p>$\tan(\alpha + \beta) = \dfrac{1 + \sqrt{3}}{1 - \sqrt{3}} = \dfrac{(1 + \sqrt{3})^2}{1 - 3} = -2 - \sqrt{3}$。</p>
+      </div>
+    </div>
+    <div class="problem">
+      <div class="problem-title">2</div>
+      <p>计算：$\dfrac{1 - \tan 15^\circ}{1 + \tan 15^\circ} = (\quad)$。</p>
+      <p>A. $\dfrac{\sqrt{3}}{3}$　B. $\dfrac{\sqrt{2}}{2}$　C. $\dfrac{\sqrt{3}}{2}$　D. $\sqrt{3}$</p>
+      <div class="answer"><span class="answer-label">答案：</span>A</div>
+      <div class="solution">
+        <div class="solution-title">解析</div>
+        <p>原式 $= \dfrac{\tan 45^\circ - \tan 15^\circ}{1 + \tan 45^\circ\tan 15^\circ} = \tan(45^\circ - 15^\circ) = \tan 30^\circ = \dfrac{\sqrt{3}}{3}$。</p>
+      </div>
+    </div>
+
+    <p style="color:var(--muted);font-weight:700;margin-top:1.5rem;">（二）填空题</p>
+    <div class="problem">
+      <div class="problem-title">1</div>
+      <p>已知点 $M(3, -4)$ 是角 $\alpha$ 终边上的一点，则 $\tan\left(\alpha + \dfrac{\pi}{4}\right) = \_\_\_\_\_\_\_$。</p>
+      <div class="answer"><span class="answer-label">答案：</span>$-\dfrac{1}{7}$</div>
+      <div class="solution">
+        <div class="solution-title">解析</div>
+        <p>$\tan\alpha = \dfrac{-4}{3} = -\dfrac{4}{3}$。</p>
+        <p>$\tan\left(\alpha + \dfrac{\pi}{4}\right) = \dfrac{-\frac{4}{3} + 1}{1 - (-\frac{4}{3}) \times 1} = \dfrac{-\frac{1}{3}}{\frac{7}{3}} = -\dfrac{1}{7}$。</p>
+      </div>
+    </div>
+    <div class="problem">
+      <div class="problem-title">2</div>
+      <p>已知 $\alpha + \beta = \dfrac{\pi}{4}$，则 $(1 + \tan\alpha)(1 + \tan\beta) = \_\_\_\_\_\_\_$。</p>
+      <div class="answer"><span class="answer-label">答案：</span>$2$</div>
+      <div class="solution">
+        <div class="solution-title">解析</div>
+        <p>因为 $\alpha + \beta = \dfrac{\pi}{4}$，所以 $\tan(\alpha + \beta) = 1$，即 $\dfrac{\tan\alpha + \tan\beta}{1 - \tan\alpha\tan\beta} = 1$。</p>
+        <p>故 $\tan\alpha + \tan\beta = 1 - \tan\alpha\tan\beta$。</p>
+        <p>$(1 + \tan\alpha)(1 + \tan\beta) = 1 + \tan\alpha + \tan\beta + \tan\alpha\tan\beta = 1 + (1 - \tan\alpha\tan\beta) + \tan\alpha\tan\beta = 2$。</p>
+      </div>
+    </div>
+
+    <p style="color:var(--muted);font-weight:700;margin-top:1.5rem;">（三）解答题</p>
+    <div class="problem">
+      <div class="problem-title">1</div>
+      <p>已知 $\tan\alpha$，$\tan\beta$ 是方程 $x^2 - 4x - 7 = 0$ 的两个实根，求 $\tan(\alpha + \beta)$ 的值。</p>
+      <div class="answer"><span class="answer-label">答案：</span>$\dfrac{1}{2}$</div>
+      <div class="solution">
+        <div class="solution-title">解析</div>
+        <p>由韦达定理：$\tan\alpha + \tan\beta = 4$，$\tan\alpha\tan\beta = -7$。</p>
+        <p>$\tan(\alpha + \beta) = \dfrac{4}{1 - (-7)} = \dfrac{4}{8} = \dfrac{1}{2}$。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6.2 二倍角公式 -->
+<section>
+  <div class="section-title">6.2 二倍角公式</div>
+  
+  <div class="content">
+    <div class="formula-box">
+      <p><strong>核心公式</strong></p>
+      <p>$$\sin 2\alpha = 2\sin\alpha\cos\alpha$$</p>
+      <p>$$\cos 2\alpha = \cos^2\alpha - \sin^2\alpha = 2\cos^2\alpha - 1 = 1 - 2\sin^2\alpha$$</p>
+      <p>$$\tan 2\alpha = \frac{2\tan\alpha}{1 - \tan^2\alpha}$$</p>
+      <p style="font-size:0.9rem;color:var(--muted);">常用变形：$\sin^2\alpha = \dfrac{1 - \cos 2\alpha}{2}$，$\cos^2\alpha = \dfrac{1 + \cos 2\alpha}{2}$。</p>
+    </div>
+  </div>
+
+  <div class="subsection-title">边学边做 1</div>
+  <div class="content">
+    <div class="problem">
+      <div class="problem-title">1</div>
+      <p>已知 $\sin\alpha = \dfrac{1}{5}$，则 $\sin^4\alpha - \cos^4\alpha = (\quad)$。</p>
+      <p>A. $-\dfrac{24}{25}$　B. $-\dfrac{23}{25}$　C. $\dfrac{23}{25}$　D. $\dfrac{24}{25}$</p>
+      <div class="answer"><span class="answer-label">答案：</span>B</div>
+      <div class="solution">
+        <div class="solution-title">解析</div>
+        <p>$\sin^4\alpha - \cos^4\alpha = (\sin^2\alpha - \cos^2\alpha)(\sin^2\alpha + \cos^2\alpha) = \sin^2\alpha - \cos^2\alpha = -(\cos^2\alpha - \sin^2\alpha) = -\cos 2\alpha$。</p>
+        <p>$\cos 2\alpha = 1 - 2\sin^2\alpha = 1 - 2 \times \dfrac{1}{25} = \dfrac{23}{25}$。</p>
+        <p>所以原式 $= -\dfrac{23}{25}$。</p>
+      </div>
+    </div>
+    <div class="problem">
+      <div class="problem-title">2</div>
+      <p>已知 $\cos\alpha = \dfrac{1}{4}$，$\alpha \in \left(\dfrac{3\pi}{2}, 2\pi\right)$，求 $\sin\dfrac{\alpha}{2}$、$\cos\dfrac{\alpha}{2}$、$\tan\dfrac{\alpha}{2}$ 的值。</p>
+      <div class="answer"><span class="answer-label">答案：</span>$\sin\dfrac{\alpha}{2} = \dfrac{\sqrt{6}}{4}$，$\cos\dfrac{\alpha}{2} = -\dfrac{\sqrt{10}}{4}$，$\tan\dfrac{\alpha}{2} = -\dfrac{\sqrt{15}}{5}$</div>
+      <div class="solution">
+        <div class="solution-title">解析</div>
+        <p>由 $\alpha \in \left(\dfrac{3\pi}{2}, 2\pi\right)$，得 $\dfrac{\alpha}{2} \in \left(\dfrac{3\pi}{4}, \pi\right)$，故 $\sin\dfrac{\alpha}{2} > 0$，$\cos\dfrac{\alpha}{2} < 0$。</p>
+        <p>$\sin\dfrac{\alpha}{2} = \sqrt{\dfrac{1 - \cos\alpha}{2}} = \sqrt{\dfrac{1 - \frac{1}{4}}{2}} = \dfrac{\sqrt{6}}{4}$。</p>
+        <p>$\cos\dfrac{\alpha}{2} = -\sqrt{\dfrac{1 + \cos\alpha}{2}} = -\sqrt{\dfrac{1 + \frac{1}{4}}{2}} = -\dfrac{\sqrt{10}}{4}$。</p>
+        <p>$\tan\dfrac{\alpha}{2} = \dfrac{\sin\frac{\alpha}{2}}{\cos\frac{\alpha}{2}} = -\dfrac{\sqrt{15}}{5}$。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="subsection-title">典例解析 2</div>
+  <div class="content">
+    <div class="problem">
+      <div class="problem-title">证明题</div>
+      <p>证明：$\dfrac{2\cos 2\alpha}{\dfrac{\cos\alpha}{\sin\alpha} - \tan\alpha} = \sin 2\alpha$。</p>
+      <div class="solution">
+        <div class="solution-title">证明</div>
+        <p>$\dfrac{\cos\alpha}{\sin\alpha} - \tan\alpha = \dfrac{\cos\alpha}{\sin\alpha} - \dfrac{\sin\alpha}{\cos\alpha} = \dfrac{\cos^2\alpha - \sin^2\alpha}{\sin\alpha\cos\alpha} = \dfrac{\cos 2\alpha}{\sin\alpha\cos\alpha}$。</p>
+        <p>左边 $= \dfrac{2\cos 2\alpha}{\frac{\cos 2\alpha}{\sin\alpha\cos\alpha}} = 2\cos 2\alpha \cdot \dfrac{\sin\alpha\cos\alpha}{\cos 2\alpha} = 2\sin\alpha\cos\alpha = \sin 2\alpha = $ 右边。</p>
+        <p>所以原等式成立。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="subsection-title">边学边做 2</div>
+  <div class="content">
+    <div class="problem">
+      <div class="problem-title">证明题</div>
+      <p>证明：$1 + 2\cos^2\alpha - \cos 2\alpha = 2$。</p>
+      <div class="solution">
+        <div class="solution-title">证明</div>
+        <p>左边 $= 1 + 2\cos^2\alpha - (2\cos^2\alpha - 1) = 1 + 2\cos^2\alpha - 2\cos^2\alpha + 1 = 2 = $ 右边。</p>
+        <p>所以原等式成立。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="subsection-title">典例解析 3</div>
+  <div class="content">
+    <div class="problem">
+      <div class="problem-title">化简题</div>
+      <p>已知 $\tan\alpha = 3$，化简：$\sin^2\alpha + \sin 2\alpha - 5\cos^2\alpha$。</p>
+      <div class="answer"><span class="answer-label">答案：</span>$1$</div>
+      <div class="solution">
+        <div class="solution-title">解析</div>
+        <p>由 $\tan\alpha = 3$，得 $\sin\alpha = 3\cos\alpha$。</p>
+        <p>原式 $= (3\cos\alpha)^2 + 2 \cdot 3\cos\alpha \cdot \cos\alpha - 5\cos^2\alpha = 9\cos^2\alpha + 6\cos^2\alpha - 5\cos^2\alpha = 10\cos^2\alpha$。</p>
+        <p>由 $\sin^2\alpha + \cos^2\alpha = 1$，即 $9\cos^2\alpha + \cos^2\alpha = 1$，得 $\cos^2\alpha = \dfrac{1}{10}$。</p>
+        <p>所以原式 $= 10 \times \dfrac{1}{10} = 1$。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="subsection-title">边学边做 3</div>
+  <div class="content">
+    <div class="problem">
+      <div class="problem-title">1</div>
+      <p>化简：$\dfrac{\sin 2\alpha - \cos 2\alpha + 1}{\cos\alpha + \sin\alpha}$。</p>
+      <div class="answer"><span class="answer-label">答案：</span>$2\sin\alpha$</div>
+      <div class="solution">
+        <div class="solution-title">解析</div>
+        <p>分子 $= 2\sin\alpha\cos\alpha - (1 - 2\sin^2\alpha) + 1 = 2\sin\alpha\cos\alpha + 2\sin^2\alpha = 2\sin\alpha(\cos\alpha + \sin\alpha)$。</p>
+        <p>原式 $= \dfrac{2\sin\alpha(\cos\alpha + \sin\alpha)}{\cos\alpha + \sin\alpha} = 2\sin\alpha$。</p>
+      </div>
+    </div>
+    <div class="problem">
+      <div class="problem-title">2</div>
+      <p>若 $\tan\alpha + \dfrac{1}{\tan\alpha} = 6$，求 $\sin 2\alpha$ 的值。</p>
+      <div class="answer"><span class="answer-label">答案：</span>$\dfrac{1}{3}$</div>
+      <div class="solution">
+        <div class="solution-title">解析</div>
+        <p>$\tan\alpha + \dfrac{1}{\tan\alpha} = \dfrac{\sin\alpha}{\cos\alpha} + \dfrac{\cos\alpha}{\sin\alpha} = \dfrac{\sin^2\alpha + \cos^2\alpha}{\sin\alpha\cos\alpha} = \dfrac{1}{\sin\alpha\cos\alpha} = 6$。</p>
+        <p>所以 $\sin\alpha\cos\alpha = \dfrac{1}{6}$，$\sin 2\alpha = 2\sin\alpha\cos\alpha = \dfrac{1}{3}$。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="subsection-title">巩固提升 · A 组</div>
+  <div class="content">
+    <p style="color:var(--muted);font-weight:700;">（一）选择题</p>
+    <div class="problem">
+      <div class="problem-title">1</div>
+      <p>已知 $\sin 2x = a - 1$，则实数 $a$ 的取值范围为 $(\quad)$。</p>
+      <p>A. $[-1, 1]$　B. $[0, 1]$　C. $[0, 2]$　D. $[-2, 0]$</p>
+      <div class="answer"><span class="answer-label">答案：</span>C</div>
+      <div class="solution">
+        <div class="solution-title">解析</div>
+        <p>因为 $-1 \le \sin 2x \le 1$，所以 $-1 \le a - 1 \le 1$，解得 $0 \le a \le 2$。</p>
+      </div>
+    </div>
+    <div class="problem">
+      <div class="problem-title">2</div>
+      <p>已知 $\cos\alpha = -\dfrac{2}{3}$，且 $\alpha \in \left(\pi, \dfrac{3\pi}{2}\right)$，则 $\sin 2\alpha = (\quad)$。</p>
+      <p>A. $-\dfrac{\sqrt{5}}{3}$　B. $\dfrac{\sqrt{5}}{3}$　C. $-\dfrac{4\sqrt{5}}{9}$　D. $\dfrac{4\sqrt{5}}{9}$</p>
+      <div class="answer"><span class="answer-label">答案：</span>D</div>
+      <div class="solution">
+        <div class="solution-title">解析</div>
+        <p>因为 $\alpha \in \left(\pi, \dfrac{3\pi}{2}\right)$，所以 $\sin\alpha = -\sqrt{1 - \frac{4}{9}} = -\dfrac{\sqrt{5}}{3}$。</p>
+        <p>$\sin 2\alpha = 2\sin\alpha\cos\alpha = 2 \times \left(-\dfrac{\sqrt{5}}{3}\right) \times \left(-\dfrac{2}{3}\right) = \dfrac{4\sqrt{5}}{9}$。</p>
+      </div>
+    </div>
+    <div class="problem">
+      <div class="problem-title">3</div>
+      <p>已知 $\tan\alpha = -\sqrt{2}$，则 $\tan 2\alpha = (\quad)$。</p>
+      <p>A. $-\dfrac{2\sqrt{2}}{3}$　B. $\dfrac{2\sqrt{2}}{3}$　C. $\sqrt{2}$　D. $2\sqrt{2}$</p>
+      <div class="answer"><span class="answer-label">答案：</span>D</div>
+      <div class="solution">
+        <div class="solution-title">解析</div>
+        <p>$\tan 2\alpha = \dfrac{2\tan\alpha}{1 - \tan^2\alpha} = \dfrac{2 \times (-\sqrt{2})}{1 - 2} = 2\sqrt{2}$。</p>
+      </div>
+    </div>
+    <div class="problem">
+      <div class="problem-title">4</div>
+      <p>若 $\sin\alpha = \dfrac{1}{3}$，则 $\cos^4\alpha - \sin^4\alpha = (\quad)$。</p>
+      <p>A. $1$　B. $\dfrac{7}{9}$　C. $-\dfrac{7}{9}$　D. $-1$</p>
+      <div class="answer"><span class="answer-label">答案：</span>B</div>
+      <div class="solution">
+        <div class="solution-title">解析</div>
+        <p>$\cos^4\alpha - \sin^4\alpha = (\cos^2\alpha - \sin^2\alpha)(\cos^2\alpha + \sin^2\alpha) = \cos 2\alpha = 1 - 2\sin^2\alpha = 1 - \dfrac{2}{9} = \dfrac{7}{9}$。</p>
+      </div>
+    </div>
+
+    <p style="color:var(--muted);font-weight:700;margin-top:1.5rem;">（二）填空题</p>
+    <div class="problem">
+      <div class="problem-title">1</div>
+      <p>计算：(1) $1 - 2\sin^2\dfrac{\pi}{12} = \_\_\_\_\_\_\_$；(2) $\sin 15^\circ\cos 15^\circ = \_\_\_\_\_\_\_$。</p>
+      <div class="answer"><span class="answer-label">答案：</span>(1) $\dfrac{\sqrt{3}}{2}$；(2) $\dfrac{1}{4}$</div>
+      <div class="solution">
+        <div class="solution-title">解析</div>
+        <p>(1) $1 - 2\sin^2\dfrac{\pi}{12} = \cos\dfrac{\pi}{6} = \dfrac{\sqrt{3}}{2}$。</p>
+        <p>(2) $\sin 15^\circ\cos 15^\circ = \dfrac{1}{2}\sin 30^\circ = \dfrac{1}{4}$。</p>
+      </div>
+    </div>
+    <div class="problem">
+      <div class="problem-title">2</div>
+      <p>若角 $\alpha$ 的终边经过点 $P\left(\dfrac{1}{2}, -\dfrac{\sqrt{3}}{2}\right)$，则 $\sin 2\alpha = \_\_\_\_\_\_\_$。</p>
+      <div class="answer"><span class="answer-label">答案：</span>$-\dfrac{\sqrt{3}}{2}$</div>
+      <div class="solution">
+        <div class="solution-title">解析</div>
+        <p>$r = 1$，所以 $\sin\alpha = -\dfrac{\sqrt{3}}{2}$，$\cos\alpha = \dfrac{1}{2}$。</p>
+        <p>$\sin 2\alpha = 2\sin\alpha\cos\alpha = 2 \times \left(-\dfrac{\sqrt{3}}{2}\right) \times \dfrac{1}{2} = -\dfrac{\sqrt{3}}{2}$。</p>
+      </div>
+    </div>
+
+    <p style="color:var(--muted);font-weight:700;margin-top:1.5rem;">（三）解答题</p>
+    <div class="problem">
+      <div class="problem-title">1</div>
+      <p>已知 $\sin\alpha = -\dfrac{4}{5}$，$\alpha \in \left(\pi, \dfrac{3\pi}{2}\right)$，求 $\sin 2\alpha$、$\cos 2\alpha$、$\tan 2\alpha$ 的值。</p>
+      <div class="answer"><span class="answer-label">答案：</span>$\sin 2\alpha = \dfrac{24}{25}$，$\cos 2\alpha = -\dfrac{7}{25}$，$\tan 2\alpha = -\dfrac{24}{7}$</div>
+      <div class="solution">
+        <div class="solution-title">解析</div>
+        <p>因为 $\alpha \in \left(\pi, \dfrac{3\pi}{2}\right)$，所以 $\cos\alpha = -\sqrt{1 - \frac{16}{25}} = -\dfrac{3}{5}$。</p>
+        <p>$\sin 2\alpha = 2\sin\alpha\cos\alpha = 2 \times \left(-\dfrac{4}{5}\right) \times \left(-\dfrac{3}{5}\right) = \dfrac{24}{25}$。</p>
+        <p>$\cos 2\alpha = 1 - 2\sin^2\alpha = 1 - 2 \times \dfrac{16}{25} = -\dfrac{7}{25}$。</p>
+        <p>$\tan\alpha = \dfrac{\sin\alpha}{\cos\alpha} = \dfrac{4}{3}$，$\tan 2\alpha = \dfrac{2 \times \frac{4}{3}}{1 - \frac{16}{9}} = -\dfrac{24}{7}$。</p>
+      </div>
+    </div>
+    <div class="problem">
+      <div class="problem-title">2</div>
+      <p>化简：$\dfrac{\sin 2\alpha - \sin\alpha}{\cos 2\alpha + 1 - \cos\alpha}$。</p>
+      <div class="answer"><span class="answer-label">答案：</span>$\tan\alpha$</div>
+      <div class="solution">
+        <div class="solution-title">解析</div>
+        <p>分子 $= 2\sin\alpha\cos\alpha - \sin\alpha = \sin\alpha(2\cos\alpha - 1)$。</p>
+        <p>分母 $= (2\cos^2\alpha - 1) + 1 - \cos\alpha = 2\cos^2\alpha - \cos\alpha = \cos\alpha(2\cos\alpha - 1)$。</p>
+        <p>原式 $= \dfrac{\sin\alpha(2\cos\alpha - 1)}{\cos\alpha(2\cos\alpha - 1)} = \dfrac{\sin\alpha}{\cos\alpha} = \tan\alpha$。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="subsection-title">巩固提升 · B 组</div>
+  <div class="content">
+    <p style="color:var(--muted);font-weight:700;">（一）选择题</p>
+    <div class="problem">
+      <div class="problem-title">1</div>
+      <p>已知 $\cos\alpha = \dfrac{4}{5}$，$\alpha \in (0, \pi)$，则 $\sin\dfrac{\alpha}{2} = (\quad)$。</p>
+      <p>A. $\pm\dfrac{\sqrt{10}}{10}$　B. $\pm\dfrac{\sqrt{10}}{5}$　C. $\dfrac{\sqrt{10}}{10}$　D. $\dfrac{\sqrt{10}}{5}$</p>
+      <div class="answer"><span class="answer-label">答案：</span>C</div>
+      <div class="solution">
+        <div class="solution-title">解析</div>
+        <p>因为 $\alpha \in (0, \pi)$，所以 $\dfrac{\alpha}{2} \in \left(0, \dfrac{\pi}{2}\right)$，$\sin\dfrac{\alpha}{2} > 0$。</p>
+        <p>$\sin\dfrac{\alpha}{2} = \sqrt{\dfrac{1 - \cos\alpha}{2}} = \sqrt{\dfrac{1 - \frac{4}{5}}{2}} = \dfrac{\sqrt{10}}{10}$。</p>
+      </div>
+    </div>
+    <div class="problem">
+      <div class="problem-title">2</div>
+      <p>计算：$\dfrac{\tan\dfrac{\pi}{12}}{1 - \tan^2\dfrac{\pi}{12}} = (\quad)$。</p>
+      <p>A. $\dfrac{\sqrt{3}}{3}$　B. $\dfrac{\sqrt{3}}{2}$　C. $\dfrac{\sqrt{3}}{6}$　D. $\sqrt{3}$</p>
+      <div class="answer"><span class="answer-label">答案：</span>C</div>
+      <div class="solution">
+        <div class="solution-title">解析</div>
+        <p>原式 $= \dfrac{1}{2} \cdot \dfrac{2\tan\frac{\pi}{12}}{1 - \tan^2\frac{\pi}{12}} = \dfrac{1}{2}\tan\dfrac{\pi}{6} = \dfrac{1}{2} \times \dfrac{\sqrt{3}}{3} = \dfrac{\sqrt{3}}{6}$。</p>
+      </div>
+    </div>
+    <div class="problem">
+      <div class="problem-title">3</div>
+      <p>若角 $\alpha$ 是 $\triangle ABC$ 的一个最大内角，且 $\sin\alpha - \cos\alpha = \dfrac{2}{3}$，则 $\triangle ABC$ 是 $(\quad)$。</p>
+      <p>A. 锐角三角形　B. 等边三角形　C. 直角三角形　D. 钝角三角形</p>
+      <div class="answer"><span class="answer-label">答案：</span>A</div>
+      <div class="solution">
+        <div class="solution-title">解析</div>
+        <p>由 $\sin\alpha - \cos\alpha = \dfrac{2}{3}$，两边平方得 $1 - \sin 2\alpha = \dfrac{4}{9}$，所以 $\sin 2\alpha = \dfrac{5}{9} > 0$。</p>
+        <p>因为 $\alpha$ 是最大内角，所以 $\alpha \in \left(\dfrac{\pi}{3}, \pi\right)$，$2\alpha \in \left(\dfrac{2\pi}{3}, 2\pi\right)$。</p>
+        <p>由 $\sin 2\alpha > 0$ 得 $2\alpha \in \left(\dfrac{2\pi}{3}, \pi\right)$，所以 $\alpha \in \left(\dfrac{\pi}{3}, \dfrac{\pi}{2}\right)$。</p>
+        <p>最大内角为锐角，故 $\triangle ABC$ 是锐角三角形。</p>
+      </div>
+    </div>
+    <div class="problem">
+      <div class="problem-title">4</div>
+      <p>已知 $\sin 2\alpha = \dfrac{1}{2}$，$\alpha \in (0, \pi)$，则 $\alpha = (\quad)$。</p>
+      <p>A. $\dfrac{\pi}{12}$ 或 $\dfrac{5\pi}{6}$　B. $\dfrac{\pi}{6}$ 或 $\dfrac{5\pi}{6}$　C. $\dfrac{\pi}{12}$ 或 $\dfrac{5\pi}{12}$　D. $\dfrac{\pi}{6}$ 或 $\dfrac{5\pi}{12}$</p>
+      <div class="answer"><span class="answer-label">答案：</span>C</div>
+      <div class="solution">
+        <div class="solution-title">解析</div>
+        <p>因为 $\alpha \in (0, \pi)$，所以 $2\alpha \in (0, 2\pi)$。</p>
+        <p>由 $\sin 2\alpha = \dfrac{1}{2}$，得 $2\alpha = \dfrac{\pi}{6}$ 或 $\dfrac{5\pi}{6}$。</p>
+        <p>所以 $\alpha = \dfrac{\pi}{12}$ 或 $\dfrac{5\pi}{12}$。</p>
+      </div>
+    </div>
+
+    <p style="color:var(--muted);font-weight:700;margin-top:1.5rem;">（二）填空题</p>
+    <div class="problem">
+      <div class="problem-title">1</div>
+      <p>已知函数 $f(x) = \dfrac{1}{1 + \sin 2x}$，则 $f(x)$ 的定义域是 $\_\_\_\_\_\_\_$。</p>
+      <div class="answer"><span class="answer-label">答案：</span>$\left\{x \mid x \neq \dfrac{3\pi}{4} + k\pi, k \in \mathbb{Z}\right\}$</div>
+      <div class="solution">
+        <div class="solution-title">解析</div>
+        <p>由 $1 + \sin 2x \neq 0$，得 $\sin 2x \neq -1$。</p>
+        <p>$2x \neq \dfrac{3\pi}{2} + 2k\pi$，即 $x \neq \dfrac{3\pi}{4} + k\pi$（$k \in \mathbb{Z}$）。</p>
+      </div>
+    </div>
+    <div class="problem">
+      <div class="problem-title">2</div>
+      <p>化简：$2 - 2\sin^2\alpha - \cos 2\alpha = \_\_\_\_\_\_\_$。</p>
+      <div class="answer"><span class="answer-label">答案：</span>$1$</div>
+      <div class="solution">
+        <div class="solution-title">解析</div>
+        <p>原式 $= 2(1 - \sin^2\alpha) - \cos 2\alpha = 2\cos^2\alpha - (2\cos^2\alpha - 1) = 1$。</p>
+      </div>
+    </div>
+
+    <p style="color:var(--muted);font-weight:700;margin-top:1.5rem;">（三）解答题</p>
+    <div class="problem">
+      <div class="problem-title">1</div>
+      <p>证明：$\dfrac{1 + \sin 2\alpha + \cos 2\alpha}{\cos\alpha + \sin\alpha} = 2\cos\alpha$。</p>
+      <div class="solution">
+        <div class="solution-title">证明</div>
+        <p>分子 $= \sin^2\alpha + \cos^2\alpha + 2\sin\alpha\cos\alpha + \cos^2\alpha - \sin^2\alpha = 2\cos^2\alpha + 2\sin\alpha\cos\alpha = 2\cos\alpha(\cos\alpha + \sin\alpha)$。</p>
+        <p>左边 $= \dfrac{2\cos\alpha(\cos\alpha + \sin\alpha)}{\cos\alpha + \sin\alpha} = 2\cos\alpha = $ 右边。</p>
+        <p>所以原等式成立。</p>
+      </div>
+    </div>
+    <div class="problem">
+      <div class="problem-title">2</div>
+      <p>已知 $\tan\theta = \dfrac{4}{3}$，且 $\cos\theta < 0$，求：</p>
+      <p>(1) $\sin 2\theta$；　(2) $\cos\left(\dfrac{\pi}{3} + \theta\right)$。</p>
+      <div class="answer"><span class="answer-label">答案：</span>(1) $\dfrac{24}{25}$；(2) $\dfrac{-3 + 4\sqrt{3}}{10}$</div>
+      <div class="solution">
+        <div class="solution-title">解析</div>
+        <p>由 $\tan\theta = \dfrac{4}{3} > 0$ 且 $\cos\theta < 0$，可知 $\theta$ 在第三象限。</p>
+        <p>$\sin\theta = -\dfrac{4}{5}$，$\cos\theta = -\dfrac{3}{5}$。</p>
+        <p>(1) $\sin 2\theta = 2\sin\theta\cos\theta = 2 \times \left(-\dfrac{4}{5}\right) \times \left(-\dfrac{3}{5}\right) = \dfrac{24}{25}$。</p>
+        <p>(2) $\cos\left(\dfrac{\pi}{3} + \theta\right) = \cos\dfrac{\pi}{3}\cos\theta - \sin\dfrac{\pi}{3}\sin\theta = \dfrac{1}{2} \times \left(-\dfrac{3}{5}\right) - \dfrac{\sqrt{3}}{2} \times \left(-\dfrac{4}{5}\right) = \dfrac{-3 + 4\sqrt{3}}{10}$。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 课堂小结 -->
+<section>
+  <div class="section-title">讲评小结</div>
+  <div class="content">
+    <div class="summary-grid">
+      <div class="summary-card">
+        <h4>6.1 正切和差角公式</h4>
+        <ul>
+          <li>整体识别 $\tan(\alpha \pm \beta)$ 的结构</li>
+          <li>巧用 $1 = \tan 45^\circ$ 进行变形</li>
+          <li>注意公式中分子分母的符号</li>
+        </ul>
+      </div>
+      <div class="summary-card">
+        <h4>6.2 二倍角公式</h4>
+        <ul>
+          <li>正用、逆用、变形用三种方向</li>
+          <li>$\cos 2\alpha$ 三种形式灵活选择</li>
+          <li>半角问题常把 $\alpha$ 看成 $2 \times \dfrac{\alpha}{2}$</li>
+        </ul>
+      </div>
+      <div class="summary-card">
+        <h4>通用技巧</h4>
+        <ul>
+          <li>先定象限，再定符号</li>
+          <li>化简时先统一函数名称</li>
+          <li>证明题从复杂边化向简单边</li>
+          <li>遇到 $1$ 想平方和或特殊角</li>
+        </ul>
+      </div>
+      <div class="summary-card">
+        <h4>易错提醒</h4>
+        <ul>
+          <li>开平方必须判断角所在象限</li>
+          <li>正切公式注意定义域限制</li>
+          <li>三角形中最大内角范围是 $\left(\dfrac{\pi}{3}, \pi\right)$</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+</body>
+</html>
