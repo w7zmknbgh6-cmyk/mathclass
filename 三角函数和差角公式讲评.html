@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>6.1 和角公式 · 讲评练习</title>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']]
+      }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #1f2937;
+      --muted: #4b5563;
+      --accent: #2563eb;
+      --accent-light: #eff6ff;
+      --border: #e5e7eb;
+      --card-bg: #fafafa;
+      --warn-bg: #fff7ed;
+      --warn-border: #f97316;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 32px 24px 64px;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 32px;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 16px;
+    }
+    h1 { font-size: 1.8rem; margin: 0; color: var(--accent); }
+    .subtitle { color: var(--muted); font-size: 0.95rem; margin-top: 6px; }
+    h2 {
+      font-size: 1.35rem;
+      margin-top: 36px;
+      padding-left: 12px;
+      border-left: 5px solid var(--accent);
+    }
+    h3 { font-size: 1.1rem; margin-top: 26px; color: var(--muted); }
+    .formula-box {
+      background: var(--accent-light);
+      border: 1px solid #dbeafe;
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin: 16px 0;
+    }
+    .formula-box ul { margin: 8px 0; padding-left: 22px; }
+    .formula-box li { margin: 6px 0; }
+    .tip {
+      background: var(--warn-bg);
+      border-left: 4px solid var(--warn-border);
+      padding: 12px 16px;
+      border-radius: 6px;
+      margin: 18px 0;
+      color: #7c2d12;
+    }
+    .problem {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin: 14px 0;
+    }
+    .problem-title {
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .options {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px 24px;
+      margin: 10px 0;
+    }
+    .options span { color: var(--text); }
+    .answer {
+      margin-top: 12px;
+      padding: 10px 14px;
+      background: #f0fdf4;
+      border: 1px solid #86efac;
+      border-radius: 6px;
+    }
+    .answer strong { color: #15803d; }
+    .explanation {
+      margin-top: 10px;
+      color: var(--muted);
+    }
+    .explanation p { margin: 6px 0; }
+    .summary {
+      background: #f3f4f6;
+      border-radius: 10px;
+      padding: 18px 20px;
+      margin-top: 36px;
+    }
+    .summary ul { padding-left: 22px; }
+    @media (max-width: 600px) {
+      .options { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>6.1 和角公式 · 讲评练习</h1>
+      <div class="subtitle">边学边做 + A 组 + B 组（不含拓展延伸）</div>
+    </header>
+
+    <section class="formula-box">
+      <strong>公式速查</strong>
+      <ul>
+        <li>正弦和差公式：\(\sin(\alpha\pm\beta)=\sin\alpha\cos\beta\pm\cos\alpha\sin\beta\)</li>
+        <li>余弦和差公式：\(\cos(\alpha\pm\beta)=\cos\alpha\cos\beta\mp\sin\alpha\sin\beta\)</li>
+        <li>诱导公式常用：\(\sin(90^{\circ}-\theta)=\cos\theta\)，\(\cos(90^{\circ}-\theta)=\sin\theta\)</li>
+      </ul>
+    </section>
+
+    <h2>一、典例解析</h2>
+    <div class="problem">
+      <div class="problem-title">典例 2</div>
+      <p>计算：\(\sin80^{\circ}\cos20^{\circ}-\sin10^{\circ}\sin20^{\circ}\)。</p>
+      <div class="answer"><strong>答案：</strong>\(\dfrac{\sqrt{3}}{2}\)</div>
+      <div class="explanation">
+        <p><strong>解析：</strong>注意到 \(10^{\circ}=90^{\circ}-80^{\circ}\)，所以 \(\sin10^{\circ}=\cos80^{\circ}\)。</p>
+        <p>
+          \[
+          \begin{aligned}
+          &\sin80^{\circ}\cos20^{\circ}-\sin10^{\circ}\sin20^{\circ} \\
+          =&\sin80^{\circ}\cos20^{\circ}-\cos80^{\circ}\sin20^{\circ} \\
+          =&\sin(80^{\circ}-20^{\circ}) \\
+          =&\sin60^{\circ}=\frac{\sqrt{3}}{2}.
+          \end{aligned}
+          \]
+        </p>
+      </div>
+    </div>
+
+    <div class="tip">
+      <strong>注意：</strong>解这类题时，先观察角之间的关系，善用诱导公式把不同角化成同名角，再逆用或变形使用和差公式。
+    </div>
+
+    <h2>二、边学边做 2</h2>
+
+    <div class="problem">
+      <div class="problem-title">1. 选择题</div>
+      <p>计算：\(\sin23^{\circ}\cos22^{\circ}+\cos23^{\circ}\sin22^{\circ}=(\quad)\)。</p>
+      <div class="options">
+        <span>A. \(-\dfrac{\sqrt{3}}{2}\)</span>
+        <span>B. \(\dfrac{1}{2}\)</span>
+        <span>C. \(\dfrac{\sqrt{2}}{2}\)</span>
+        <span>D. \(\dfrac{\sqrt{3}}{2}\)</span>
+      </div>
+      <div class="answer"><strong>答案：</strong>C</div>
+      <div class="explanation">
+        <p><strong>解析：</strong>直接逆用正弦和角公式：</p>
+        <p>\(\sin23^{\circ}\cos22^{\circ}+\cos23^{\circ}\sin22^{\circ}=\sin(23^{\circ}+22^{\circ})=\sin45^{\circ}=\dfrac{\sqrt{2}}{2}\)。</p>
+      </div>
+    </div>
+
+    <div class="problem">
+      <div class="problem-title">2. 计算题</div>
+      <p>计算：\(\sin53^{\circ}\cos8^{\circ}-\sin37^{\circ}\sin8^{\circ}\)。</p>
+      <div class="answer"><strong>答案：</strong>\(\dfrac{\sqrt{2}}{2}\)</div>
+      <div class="explanation">
+        <p><strong>解析：</strong>因为 \(37^{\circ}=90^{\circ}-53^{\circ}\)，所以 \(\sin37^{\circ}=\cos53^{\circ}\)。</p>
+        <p>
+          \[
+          \begin{aligned}
+          &\sin53^{\circ}\cos8^{\circ}-\sin37^{\circ}\sin8^{\circ} \\
+          =&\sin53^{\circ}\cos8^{\circ}-\cos53^{\circ}\sin8^{\circ} \\
+          =&\sin(53^{\circ}-8^{\circ}) \\
+          =&\sin45^{\circ}=\frac{\sqrt{2}}{2}.
+          \end{aligned}
+          \]
+        </p>
+      </div>
+    </div>
+
+    <h2>三、巩固提升 · A 组</h2>
+    <h3>（一）选择题</h3>
+
+    <div class="problem">
+      <div class="problem-title">1.</div>
+      <p>计算：\(\sin105^{\circ}=(\quad)\)。</p>
+      <div class="options">
+        <span>A. \(\dfrac{\sqrt{6}+\sqrt{2}}{4}\)</span>
+        <span>B. \(\dfrac{\sqrt{6}-\sqrt{2}}{4}\)</span>
+        <span>C. \(-\dfrac{\sqrt{6}+\sqrt{2}}{4}\)</span>
+        <span>D. \(-\dfrac{\sqrt{6}-\sqrt{2}}{4}\)</span>
+      </div>
+      <div class="answer"><strong>答案：</strong>A</div>
+      <div class="explanation">
+        <p><strong>解析：</strong>\(105^{\circ}=60^{\circ}+45^{\circ}\)，</p>
+        <p>
+          \[
+          \begin{aligned}
+          \sin105^{\circ}&=\sin(60^{\circ}+45^{\circ}) \\
+          &=\sin60^{\circ}\cos45^{\circ}+\cos60^{\circ}\sin45^{\circ} \\
+          &=\frac{\sqrt{3}}{2}\cdot\frac{\sqrt{2}}{2}+\frac{1}{2}\cdot\frac{\sqrt{2}}{2} \\
+          &=\frac{\sqrt{6}+\sqrt{2}}{4}.
+          \end{aligned}
+          \]
+        </p>
+      </div>
+    </div>
+
+    <div class="problem">
+      <div class="problem-title">2.</div>
+      <p>已知 \(\sin\alpha=-\dfrac{4}{5}\)，且 \(\alpha\) 是第三象限角，则 \(\sin\left(\dfrac{\pi}{6}-\alpha\right)=(\quad)\)。</p>
+      <div class="options">
+        <span>A. \(\dfrac{-3-4\sqrt{3}}{10}\)</span>
+        <span>B. \(\dfrac{-3+4\sqrt{3}}{10}\)</span>
+        <span>C. \(\dfrac{3+4\sqrt{3}}{10}\)</span>
+        <span>D. \(\dfrac{3-4\sqrt{3}}{10}\)</span>
+      </div>
+      <div class="answer"><strong>答案：</strong>B</div>
+      <div class="explanation">
+        <p><strong>解析：</strong>\(\alpha\) 在第三象限，\(\cos\alpha<0\)。</p>
+        <p>\(\cos\alpha=-\sqrt{1-\sin^2\alpha}=-\sqrt{1-\left(-\dfrac{4}{5}\right)^2}=-\dfrac{3}{5}\)。</p>
+        <p>
+          \[
+          \begin{aligned}
+          \sin\left(\frac{\pi}{6}-\alpha\right)
+          &=\sin\frac{\pi}{6}\cos\alpha-\cos\frac{\pi}{6}\sin\alpha \\
+          &=\frac{1}{2}\cdot\left(-\frac{3}{5}\right)-\frac{\sqrt{3}}{2}\cdot\left(-\frac{4}{5}\right) \\
+          &=\frac{-3+4\sqrt{3}}{10}.
+          \end{aligned}
+          \]
+        </p>
+      </div>
+    </div>
+
+    <div class="problem">
+      <div class="problem-title">3.</div>
+      <p>计算：\(\sin51^{\circ}\cos6^{\circ}-\cos51^{\circ}\sin6^{\circ}=(\quad)\)。</p>
+      <div class="options">
+        <span>A. \(\dfrac{1}{2}\)</span>
+        <span>B. \(\dfrac{\sqrt{2}}{2}\)</span>
+        <span>C. \(\dfrac{\sqrt{3}}{2}\)</span>
+        <span>D. \(1\)</span>
+      </div>
+      <div class="answer"><strong>答案：</strong>B</div>
+      <div class="explanation">
+        <p><strong>解析：</strong>逆用正弦差角公式：</p>
+        <p>\(\sin51^{\circ}\cos6^{\circ}-\cos51^{\circ}\sin6^{\circ}=\sin(51^{\circ}-6^{\circ})=\sin45^{\circ}=\dfrac{\sqrt{2}}{2}\)。</p>
+      </div>
+    </div>
+
+    <div class="problem">
+      <div class="problem-title">4.</div>
+      <p>下列式子正确的是\((\quad)\)。</p>
+      <div class="options">
+        <span>A. \(\cos(\alpha-\beta)=\cos\alpha-\cos\beta\)</span>
+        <span>B. \(\cos(\alpha-\beta)=\cos\alpha\cos\beta-\sin\alpha\sin\beta\)</span>
+        <span>C. \(\sin(\alpha+\beta)=\sin\alpha+\sin\beta\)</span>
+        <span>D. \(\sin(\alpha-\beta)=\sin\alpha\cos\beta-\cos\alpha\sin\beta\)</span>
+      </div>
+      <div class="answer"><strong>答案：</strong>D</div>
+      <div class="explanation">
+        <p><strong>解析：</strong>对照和差公式：</p>
+        <p>\(\cos(\alpha-\beta)=\cos\alpha\cos\beta+\sin\alpha\sin\beta\)，故 A、B 错误；</p>
+        <p>\(\sin(\alpha+\beta)=\sin\alpha\cos\beta+\cos\alpha\sin\beta\)，故 C 错误；</p>
+        <p>\(\sin(\alpha-\beta)=\sin\alpha\cos\beta-\cos\alpha\sin\beta\)，D 正确。</p>
+      </div>
+    </div>
+
+    <h3>（二）填空题</h3>
+
+    <div class="problem">
+      <div class="problem-title">1.</div>
+      <p>计算：\(\sin75^{\circ}=\)________。</p>
+      <div class="answer"><strong>答案：</strong>\(\dfrac{\sqrt{6}+\sqrt{2}}{4}\)</div>
+      <div class="explanation">
+        <p><strong>解析：</strong>\(75^{\circ}=45^{\circ}+30^{\circ}\)，</p>
+        <p>
+          \[
+          \sin75^{\circ}=\sin45^{\circ}\cos30^{\circ}+\cos45^{\circ}\sin30^{\circ}
+          =\frac{\sqrt{2}}{2}\cdot\frac{\sqrt{3}}{2}+\frac{\sqrt{2}}{2}\cdot\frac{1}{2}
+          =\frac{\sqrt{6}+\sqrt{2}}{4}.
+          \]
+        </p>
+      </div>
+    </div>
+
+    <div class="problem">
+      <div class="problem-title">2.</div>
+      <p>化简：\(\sin(x-y)\cos y+\cos(x-y)\sin y=\)________。</p>
+      <div class="answer"><strong>答案：</strong>\(\sin x\)</div>
+      <div class="explanation">
+        <p><strong>解析：</strong>把 \((x-y)\) 看作一个整体，逆用正弦和角公式：</p>
+        <p>\(\sin(x-y)\cos y+\cos(x-y)\sin y=\sin\big[(x-y)+y\big]=\sin x\)。</p>
+      </div>
+    </div>
+
+    <h3>（三）解答题</h3>
+
+    <div class="problem">
+      <div class="problem-title">1.</div>
+      <p>求 \(\sin195^{\circ}\) 的值。</p>
+      <div class="answer"><strong>答案：</strong>\(\dfrac{\sqrt{2}-\sqrt{6}}{4}\)</div>
+      <div class="explanation">
+        <p><strong>解析：</strong>\(195^{\circ}=180^{\circ}+15^{\circ}\)，所以 \(\sin195^{\circ}=-\sin15^{\circ}\)。</p>
+        <p>
+          \[
+          \begin{aligned}
+          \sin15^{\circ}&=\sin(45^{\circ}-30^{\circ}) \\
+          &=\sin45^{\circ}\cos30^{\circ}-\cos45^{\circ}\sin30^{\circ} \\
+          &=\frac{\sqrt{2}}{2}\cdot\frac{\sqrt{3}}{2}-\frac{\sqrt{2}}{2}\cdot\frac{1}{2} \\
+          &=\frac{\sqrt{6}-\sqrt{2}}{4}.
+          \end{aligned}
+          \]
+        </p>
+        <p>因此 \(\sin195^{\circ}=-\dfrac{\sqrt{6}-\sqrt{2}}{4}=\dfrac{\sqrt{2}-\sqrt{6}}{4}\)。</p>
+      </div>
+    </div>
+
+    <div class="problem">
+      <div class="problem-title">2.</div>
+      <p>已知 \(\sin\alpha=\dfrac{2}{3}\)，\(\alpha\in\left(\dfrac{\pi}{2},\pi\right)\)，求 \(\sin\left(\alpha-\dfrac{\pi}{3}\right)\) 的值。</p>
+      <div class="answer"><strong>答案：</strong>\(\dfrac{2+\sqrt{15}}{6}\)</div>
+      <div class="explanation">
+        <p><strong>解析：</strong>\(\alpha\) 在第二象限，\(\cos\alpha<0\)。</p>
+        <p>\(\cos\alpha=-\sqrt{1-\sin^2\alpha}=-\sqrt{1-\dfrac{4}{9}}=-\dfrac{\sqrt{5}}{3}\)。</p>
+        <p>
+          \[
+          \begin{aligned}
+          \sin\left(\alpha-\frac{\pi}{3}\right)
+          &=\sin\alpha\cos\frac{\pi}{3}-\cos\alpha\sin\frac{\pi}{3} \\
+          &=\frac{2}{3}\cdot\frac{1}{2}-\left(-\frac{\sqrt{5}}{3}\right)\cdot\frac{\sqrt{3}}{2} \\
+          &=\frac{1}{3}+\frac{\sqrt{15}}{6} \\
+          &=\frac{2+\sqrt{15}}{6}.
+          \end{aligned}
+          \]
+        </p>
+      </div>
+    </div>
+
+    <h2>四、巩固提升 · B 组</h2>
+    <h3>（一）选择题</h3>
+
+    <div class="problem">
+      <div class="problem-title">1.</div>
+      <p>计算：\(\cos(15^{\circ}+\alpha)\sin(45^{\circ}-\alpha)+\sin(15^{\circ}+\alpha)\cos(45^{\circ}-\alpha)=(\quad)\)。</p>
+      <div class="options">
+        <span>A. \(\dfrac{1}{2}\)</span>
+        <span>B. \(\dfrac{\sqrt{2}}{2}\)</span>
+        <span>C. \(\dfrac{\sqrt{3}}{2}\)</span>
+        <span>D. \(1\)</span>
+      </div>
+      <div class="answer"><strong>答案：</strong>C</div>
+      <div class="explanation">
+        <p><strong>解析：</strong>令 \(A=15^{\circ}+\alpha\)，\(B=45^{\circ}-\alpha\)，则原式 \(=\sin B\cos A+\cos B\sin A=\sin(A+B)\)。</p>
+        <p>\(A+B=(15^{\circ}+\alpha)+(45^{\circ}-\alpha)=60^{\circ}\)，所以结果为 \(\sin60^{\circ}=\dfrac{\sqrt{3}}{2}\)。</p>
+      </div>
+    </div>
+
+    <div class="problem">
+      <div class="problem-title">2.</div>
+      <p>计算：\(\dfrac{\sqrt{3}}{2}\cos15^{\circ}-\dfrac{1}{2}\sin15^{\circ}=(\quad)\)。</p>
+      <div class="options">
+        <span>A. \(\dfrac{1}{2}\)</span>
+        <span>B. \(\dfrac{\sqrt{2}}{2}\)</span>
+        <span>C. \(\dfrac{\sqrt{3}}{2}\)</span>
+        <span>D. \(1\)</span>
+      </div>
+      <div class="answer"><strong>答案：</strong>B</div>
+      <div class="explanation">
+        <p><strong>解析：</strong>注意到 \(\dfrac{\sqrt{3}}{2}=\cos30^{\circ}\)，\(\dfrac{1}{2}=\sin30^{\circ}\)，所以</p>
+        <p>
+          \[
+          \frac{\sqrt{3}}{2}\cos15^{\circ}-\frac{1}{2}\sin15^{\circ}
+          =\cos30^{\circ}\cos15^{\circ}-\sin30^{\circ}\sin15^{\circ}
+          =\cos(30^{\circ}+15^{\circ})
+          =\cos45^{\circ}=\frac{\sqrt{2}}{2}.
+          \]
+        </p>
+      </div>
+    </div>
+
+    <div class="problem">
+      <div class="problem-title">3.</div>
+      <p>化简：\(\sin\alpha-\cos\alpha=(\quad)\)。</p>
+      <div class="options">
+        <span>A. \(\sqrt{2}\sin\left(\alpha-\dfrac{\pi}{4}\right)\)</span>
+        <span>B. \(\sqrt{2}\sin\left(\alpha+\dfrac{\pi}{4}\right)\)</span>
+        <span>C. \(2\sin\left(\alpha+\dfrac{\pi}{4}\right)\)</span>
+        <span>D. \(2\sin\left(\alpha-\dfrac{\pi}{4}\right)\)</span>
+      </div>
+      <div class="answer"><strong>答案：</strong>A</div>
+      <div class="explanation">
+        <p><strong>解析：</strong>提取 \(\sqrt{2}\) 后逆用正弦差角公式：</p>
+        <p>
+          \[
+          \begin{aligned}
+          \sin\alpha-\cos\alpha
+          &=\sqrt{2}\left(\frac{1}{\sqrt{2}}\sin\alpha-\frac{1}{\sqrt{2}}\cos\alpha\right) \\
+          &=\sqrt{2}\left(\sin\alpha\cos\frac{\pi}{4}-\cos\alpha\sin\frac{\pi}{4}\right) \\
+          &=\sqrt{2}\sin\left(\alpha-\frac{\pi}{4}\right).
+          \end{aligned}
+          \]
+        </p>
+      </div>
+    </div>
+
+    <div class="problem">
+      <div class="problem-title">4.</div>
+      <p>已知 \(\alpha,\beta\) 均为锐角，且 \(\sin\alpha=\dfrac{3}{5}\)，\(\sin\beta=\dfrac{5}{13}\)，则 \(\sin(\alpha-\beta)=(\quad)\)。</p>
+      <div class="options">
+        <span>A. \(\dfrac{14}{65}\)</span>
+        <span>B. \(-\dfrac{21}{65}\)</span>
+        <span>C. \(\dfrac{16}{65}\)</span>
+        <span>D. \(\dfrac{63}{65}\)</span>
+      </div>
+      <div class="answer"><strong>答案：</strong>C</div>
+      <div class="explanation">
+        <p><strong>解析：</strong>\(\alpha,\beta\) 为锐角，故余弦为正。</p>
+        <p>\(\cos\alpha=\sqrt{1-\left(\dfrac{3}{5}\right)^2}=\dfrac{4}{5}\)，\(\cos\beta=\sqrt{1-\left(\dfrac{5}{13}\right)^2}=\dfrac{12}{13}\)。</p>
+        <p>
+          \[
+          \begin{aligned}
+          \sin(\alpha-\beta)
+          &=\sin\alpha\cos\beta-\cos\alpha\sin\beta \\
+          &=\frac{3}{5}\cdot\frac{12}{13}-\frac{4}{5}\cdot\frac{5}{13} \\
+          &=\frac{36}{65}-\frac{20}{65}=\frac{16}{65}.
+          \end{aligned}
+          \]
+        </p>
+      </div>
+    </div>
+
+    <h3>（二）填空题</h3>
+
+    <div class="problem">
+      <div class="problem-title">1.</div>
+      <p>若 \(\dfrac{\pi}{4}<\alpha<\dfrac{3\pi}{4}\)，且 \(\cos\left(\alpha-\dfrac{\pi}{4}\right)=\dfrac{3}{5}\)，则 \(\sin\alpha=\)________。</p>
+      <div class="answer"><strong>答案：</strong>\(\dfrac{7\sqrt{2}}{10}\)</div>
+      <div class="explanation">
+        <p><strong>解析：</strong>设 \(\theta=\alpha-\dfrac{\pi}{4}\)，则 \(\alpha=\theta+\dfrac{\pi}{4}\)。</p>
+        <p>由 \(\dfrac{\pi}{4}<\alpha<\dfrac{3\pi}{4}\) 知 \(0<\theta<\dfrac{\pi}{2}\)，所以 \(\sin\theta=\sqrt{1-\left(\dfrac{3}{5}\right)^2}=\dfrac{4}{5}\)。</p>
+        <p>
+          \[
+          \begin{aligned}
+          \sin\alpha&=\sin\left(\theta+\frac{\pi}{4}\right) \\
+          &=\sin\theta\cos\frac{\pi}{4}+\cos\theta\sin\frac{\pi}{4} \\
+          &=\frac{4}{5}\cdot\frac{\sqrt{2}}{2}+\frac{3}{5}\cdot\frac{\sqrt{2}}{2} \\
+          &=\frac{7\sqrt{2}}{10}.
+          \end{aligned}
+          \]
+        </p>
+      </div>
+    </div>
+
+    <div class="problem">
+      <div class="problem-title">2.</div>
+      <p>计算：\(\sin40^{\circ}\cos20^{\circ}+\sin50^{\circ}\sin20^{\circ}=\)________。</p>
+      <div class="answer"><strong>答案：</strong>\(\dfrac{\sqrt{3}}{2}\)</div>
+      <div class="explanation">
+        <p><strong>解析：</strong>因为 \(\sin50^{\circ}=\cos40^{\circ}\)，所以</p>
+        <p>
+          \[
+          \begin{aligned}
+          &\sin40^{\circ}\cos20^{\circ}+\sin50^{\circ}\sin20^{\circ} \\
+          =&\sin40^{\circ}\cos20^{\circ}+\cos40^{\circ}\sin20^{\circ} \\
+          =&\sin(40^{\circ}+20^{\circ}) \\
+          =&\sin60^{\circ}=\frac{\sqrt{3}}{2}.
+          \end{aligned}
+          \]
+        </p>
+      </div>
+    </div>
+
+    <h3>（三）解答题</h3>
+
+    <div class="problem">
+      <div class="problem-title">1.</div>
+      <p>已知 \(\cos(\alpha+\beta)=\dfrac{3}{5}\)，\(\cos(\alpha-\beta)=\dfrac{8}{17}\)，\(0<\beta<\alpha<\dfrac{\pi}{2}\)，求 \(\sin2\alpha\) 的值。</p>
+      <div class="answer"><strong>答案：</strong>\(\dfrac{77}{85}\)</div>
+      <div class="explanation">
+        <p><strong>解析：</strong>注意到 \(2\alpha=(\alpha+\beta)+(\alpha-\beta)\)，因此先求两个角的正弦。</p>
+        <p>因为 \(0<\beta<\alpha<\dfrac{\pi}{2}\)，所以 \(0<\alpha+\beta<\pi\)，\(0<\alpha-\beta<\dfrac{\pi}{2}\)。</p>
+        <p>
+          \[
+          \sin(\alpha+\beta)=\sqrt{1-\left(\frac{3}{5}\right)^2}=\frac{4}{5},
+          \qquad
+          \sin(\alpha-\beta)=\sqrt{1-\left(\frac{8}{17}\right)^2}=\frac{15}{17}.
+          \]
+        </p>
+        <p>
+          \[
+          \begin{aligned}
+          \sin2\alpha
+          &=\sin\big[(\alpha+\beta)+(\alpha-\beta)\big] \\
+          &=\sin(\alpha+\beta)\cos(\alpha-\beta)+\cos(\alpha+\beta)\sin(\alpha-\beta) \\
+          &=\frac{4}{5}\cdot\frac{8}{17}+\frac{3}{5}\cdot\frac{15}{17} \\
+          &=\frac{32}{85}+\frac{45}{85}=\frac{77}{85}.
+          \end{aligned}
+          \]
+        </p>
+      </div>
+    </div>
+
+    <section class="summary">
+      <h2>讲评小结</h2>
+      <ul>
+        <li><strong>看角关系：</strong>遇到 \(10^{\circ}\) 与 \(80^{\circ}\)、\(40^{\circ}\) 与 \(50^{\circ}\) 等互余角，优先用诱导公式化同名。</li>
+        <li><strong>整体代换：</strong>如 \(\sin(x-y)\cos y+\cos(x-y)\sin y\)，把 \((x-y)\) 当成一个整体使用公式。</li>
+        <li><strong>凑角技巧：</strong>求 \(\sin2\alpha\) 时，观察到 \(2\alpha=(\alpha+\beta)+(\alpha-\beta)\)，避免单独求 \(\alpha,\beta\)。</li>
+        <li><strong>符号判断：</strong>已知三角函数值求其他值时，一定要结合象限判断余弦（或正弦）的正负。</li>
+      </ul>
+    </section>
+  </div>
+</body>
+</html>
