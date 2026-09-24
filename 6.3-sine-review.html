@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>6.3 正弦型函数的图像和性质 · 课堂练习答案讲评</title>
+<script>
+window.MathJax={tex:{inlineMath:[['\\(','\\)'],['$','$']]},svg:{fontCache:'global'}};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:"Microsoft YaHei","PingFang SC",sans-serif;background:#f4f6fa;color:#2c3e50;line-height:1.8;padding-bottom:60px;}
+.wrap{max-width:900px;margin:0 auto;padding:16px;}
+header{background:linear-gradient(135deg,#1e5799,#2989d8);color:#fff;border-radius:12px;padding:26px 24px;margin-bottom:20px;box-shadow:0 4px 14px rgba(30,87,153,.3);}
+header h1{font-size:1.55rem;margin-bottom:6px;}
+header p{opacity:.92;font-size:.95rem;}
+h2.sec{margin:34px 0 14px;padding:10px 16px;background:#1e5799;color:#fff;border-radius:8px;font-size:1.2rem;}
+h3.sub{margin:22px 0 10px;padding:6px 12px;border-left:5px solid #2989d8;background:#e8f1fb;color:#1e5799;border-radius:0 6px 6px 0;font-size:1.05rem;}
+.knowledge{background:#fff;border-radius:10px;padding:18px 20px;margin-bottom:12px;box-shadow:0 2px 8px rgba(0,0,0,.06);border-top:4px solid #f39c12;}
+.knowledge h4{color:#d35400;font-size:1.02rem;margin-bottom:6px;}
+.knowledge .formula{background:#fdf6ec;border-radius:6px;padding:8px 12px;margin:6px 0;font-size:1.08rem;}
+.knowledge .tip{color:#7f8c8d;font-size:.92rem;}
+.q{background:#fff;border-radius:10px;padding:16px 18px;margin:14px 0;box-shadow:0 2px 8px rgba(0,0,0,.06);border-left:4px solid #2989d8;}
+.q-title{font-weight:bold;font-size:1.03rem;margin-bottom:6px;}
+.opts{margin:4px 0 8px 12px;color:#555;}
+.opts span{display:inline-block;margin-right:26px;}
+.think{background:#fffbe8;border:1px solid #f5e6a8;border-radius:8px;padding:10px 14px;margin:10px 0;font-size:.96rem;}
+.think .tlabel{color:#b7950b;font-weight:bold;}
+button{cursor:pointer;border:none;border-radius:6px;padding:7px 16px;font-size:.92rem;font-family:inherit;}
+.ans-btn{background:#2989d8;color:#fff;margin-right:8px;}
+.ans-btn:hover{background:#1e5799;}
+.voice{background:#27ae60;color:#fff;margin-left:8px;}
+.voice:hover{background:#1e8449;}
+.allbtn{background:#8e44ad;color:#fff;margin:10px 0;}
+.hidden{display:none;}
+.ans{background:#eafaf1;border:1px solid #bce8c8;border-radius:8px;padding:12px 16px;margin-top:10px;}
+.ans .final{color:#c0392b;font-weight:bold;font-size:1.05rem;margin-bottom:8px;}
+.ans ol{margin-left:0;list-style:none;counter-reset:step;}
+.ans ol li{counter-increment:step;position:relative;padding:5px 0 5px 40px;border-bottom:1px dashed #d5ecd9;font-size:1rem;}
+.ans ol li:last-child{border-bottom:none;}
+.ans ol li::before{content:counter(step);position:absolute;left:0;top:8px;width:26px;height:26px;line-height:26px;text-align:center;background:#2989d8;color:#fff;border-radius:50%;font-size:.85rem;}
+.warn{background:#fdecea;border-left:4px solid #e74c3c;border-radius:6px;padding:8px 12px;margin-top:8px;font-size:.93rem;color:#c0392b;}
+.note{background:#eef1f5;border-radius:8px;padding:10px 14px;color:#666;font-size:.92rem;margin:12px 0;}
+.footer-tip{margin-top:30px;text-align:center;color:#95a5a6;font-size:.88rem;}
+@media print{.ans-btn,.voice,.allbtn{display:none;}.hidden{display:block;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>6.3 正弦型函数的图像和性质 · 课堂练习答案讲评</h1>
+  <p>第 6 章 三角计算 ｜ 巩固提升 A 组 + B 组 ｜ 每题：一行一个步骤 · 解题思路可语音朗读</p>
+</header>
+
+<div class="note">🔊 使用方法：点每题「🔊 朗读思路」按钮，浏览器会用接近真人的中文语音读出解题思路（用 Edge 或 Chrome 打开效果最好）；再点一次可停止。「显示答案」按钮展开分步解答。一键展开：<button class="allbtn" onclick="toggleAll(1)">展开全部答案</button> <button class="allbtn" onclick="toggleAll(0)">收起全部答案</button></div>
+
+<h2 class="sec">第一部分 · 做题必备知识点（先看这个再做题）</h2>
+
+<div class="knowledge">
+  <h4>① 正弦型函数 y = A sin(ωx + φ)（A&gt;0，ω&gt;0）各字母的含义</h4>
+  <div class="formula">\(A\) —— 振幅（决定最高多高、最低多低）；\(\omega x+\varphi\) —— 相位；\(\varphi\) —— 初相（\(x=0\) 时的相位，<b>带正负号</b>）</div>
+  <p class="tip">拿到函数先圈出 A、ω、φ 三个数，大多数题目就是在考它们。</p>
+</div>
+
+<div class="knowledge">
+  <h4>② 周期与频率（判断周期只看 ω，与 A、φ 无关）</h4>
+  <div class="formula">\(T=\dfrac{2\pi}{\omega}\)，频率 \(f=\dfrac{1}{T}=\dfrac{\omega}{2\pi}\)</div>
+  <p class="tip">形如 sin kx 的周期是 \( \frac{2\pi}{k} \)；函数后面加常数（如 3+sin4x）不改变周期。</p>
+</div>
+
+<div class="knowledge">
+  <h4>③ 值域与最值</h4>
+  <div class="formula">\(y=A\sin(\omega x+\varphi)\) 的值域是 \([-A,\,A]\)；再加常数 \(+k\)，值域整体上移变成 \([k-A,\;k+A]\)</div>
+  <p class="tip">最大值 A：令 \(\omega x+\varphi=\frac{\pi}{2}+2k\pi\)；最小值 −A：令 \(\omega x+\varphi=-\frac{\pi}{2}+2k\pi\)。</p>
+</div>
+
+<div class="knowledge">
+  <h4>④ 辅助角公式（处理 a·sin x ± b·cos x）</h4>
+  <div class="formula">\(a\sin x+b\cos x=\sqrt{a^2+b^2}\,\sin(x+\varphi)\)，其中 \(\tan\varphi=\dfrac{b}{a}\)</div>
+  <p class="tip">值域就是 \(\left[-\sqrt{a^2+b^2},\;\sqrt{a^2+b^2}\right]\)。例如 3sin x−4cos x 的振幅是 √(3²+4²)=5。</p>
+</div>
+
+<div class="knowledge">
+  <h4>⑤ 图像变换（左移右移、伸缩）</h4>
+  <div class="formula">y=sin x →（横坐标变为 1/ω 倍）→ y=sin ωx →（向左/右平移 |φ|/ω 个单位）→ y=sin(ωx+φ) →（纵坐标变为 A 倍）→ y=A sin(ωx+φ)</div>
+  <p class="tip">关键易错点：先变周期再平移时，平移量是 \(\frac{|\varphi|}{\omega}\)（要把 x 的系数提出来再平移）；如果是先平移再变周期，平移量才是 |φ|。</p>
+</div>
+
+<div class="knowledge">
+  <h4>⑥ 对称轴与对称中心</h4>
+  <div class="formula">对称轴：令 \(\omega x+\varphi=\dfrac{\pi}{2}+k\pi\)，解出 x；对称中心：令 \(\omega x+\varphi=k\pi\)，解出 x（此时 y=0）</div>
+  <p class="tip">"一条对称轴"这种选择题：先由周期定出 ω，再令相位等于 π/2+kπ 逐个验证选项。</p>
+</div>
+
+<div class="knowledge">
+  <h4>⑦ 奇偶性</h4>
+  <div class="formula">\(\varphi=0\) 时是奇函数（如 sin 2x）；\(\varphi=\pm\frac{\pi}{2}\) 时是偶函数（如 cos 2x）；其他情况非奇非偶</div>
+  <p class="tip">sin⁴x−cos⁴x 这类式子先因式分解化简成 −cos 2x 再判断，不要硬算。</p>
+</div>
+
+<div class="knowledge">
+  <h4>⑧ 已知最高点、最低点求解析式 y = A sin(ωx+φ)</h4>
+  <div class="formula">A =（最大值−最小值）÷ 2；相邻最高点与最低点的横坐标之差 = \(\dfrac{T}{2}\)；把最高点代入 \(\omega x+\varphi=\dfrac{\pi}{2}+2k\pi\) 求 φ</div>
+  <p class="tip">三步走：先定 A，再由两点距离定 ω，最后代点定 φ。</p>
+</div>
+
+<h2 class="sec">第二部分 · 巩固提升 A 组讲评</h2>
+
+<h3 class="sub">（一）选择题</h3>
+
+<div class="q">
+  <div class="q-title">1. 函数 \(f(x)=6\sin\left(2x-\dfrac{\pi}{5}\right)\) 的频率和初相分别是（　）</div>
+  <div class="opts"><span>A. \(\pi,\ \dfrac{\pi}{5}\)</span><span>B. \(\dfrac{1}{\pi},\ \dfrac{\pi}{5}\)</span><span>C. \(\pi,\ -\dfrac{\pi}{5}\)</span><span>D. \(\dfrac{1}{\pi},\ -\dfrac{\pi}{5}\)</span></div>
+  <div class="think"><span class="tlabel">💡 解题思路</span><button class="voice" onclick="speak(this)" data-say="这道题考频率和初相。频率等于周期的倒数。欧米伽等于2，周期是二派除以二，等于派，所以频率是一比派。初相就是x等于0时的相位，注意要带负号，是负五分之派。所以选D。最容易错的地方：初相的负号不能丢，选B的同学就是丢了负号。">🔊 朗读思路</button><br>频率 = 周期的倒数；初相是 \(x=0\) 时的相位 φ，<b>负号必须带上</b>。</div>
+  <button class="ans-btn" onclick="toggleAns(this)">显示答案</button>
+  <div class="ans hidden">
+    <p class="final">答案：D</p>
+    <ol>
+      <li>对照 \(y=A\sin(\omega x+\varphi)\)：这里 \(A=6\)，\(\omega=2\)，\(\varphi=-\dfrac{\pi}{5}\)。</li>
+      <li>求周期：\(T=\dfrac{2\pi}{\omega}=\dfrac{2\pi}{2}=\pi\)。</li>
+      <li>求频率：\(f=\dfrac{1}{T}=\dfrac{1}{\pi}\)。</li>
+      <li>初相就是 \(\varphi\)，即 \(-\dfrac{\pi}{5}\)（含负号）。</li>
+      <li>所以频率 \(\dfrac{1}{\pi}\)、初相 \(-\dfrac{\pi}{5}\)，选 <b>D</b>。</li>
+    </ol>
+    <div class="warn">⚠ 易错：初相带符号——选 B 的同学丢了负号；频率是 \(\frac{1}{\pi}\) 不是 \(\pi\)——别把周期当成频率。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-title">2. 函数 \(f(x)=3+\sin 4x\) 的最小正周期是（　）</div>
+  <div class="opts"><span>A. \(\dfrac{\pi}{4}\)</span><span>B. \(\dfrac{\pi}{2}\)</span><span>C. \(\pi\)</span><span>D. \(2\pi\)</span></div>
+  <div class="think"><span class="tlabel">💡 解题思路</span><button class="voice" onclick="speak(this)" data-say="判断周期只看x的系数。这里sin里面x的系数是4，周期就是二派除以四，等于二分之派。前面加的3只是把图像整体往上抬，不影响周期。所以选B。">🔊 朗读思路</button><br>周期只看 \(\omega\)；"+3" 只是把图像上下平移，<b>不影响周期</b>。</div>
+  <button class="ans-btn" onclick="toggleAns(this)">显示答案</button>
+  <div class="ans hidden">
+    <p class="final">答案：B</p>
+    <ol>
+      <li>\(\sin 4x\) 中 \(\omega=4\)，所以 \(T=\dfrac{2\pi}{4}=\dfrac{\pi}{2}\)。</li>
+      <li>"+3" 只让图像整体向上平移 3 个单位，周期不变。</li>
+      <li>所以最小正周期是 \(\dfrac{\pi}{2}\)，选 <b>B</b>。</li>
+    </ol>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-title">3. 函数 \(y=3\sin x-4\cos x\) 的值域为（　）</div>
+  <div class="opts"><span>A. \([-7,7]\)</span><span>B. \([-3,3]\)</span><span>C. \([-4,4]\)</span><span>D. \([-5,5]\)</span></div>
+  <div class="think"><span class="tlabel">💡 解题思路</span><button class="voice" onclick="speak(this)" data-say="这是辅助角公式的题。a倍的sin x加b倍的cos x，可以合并成一个正弦，振幅是根号下a方加b方。这里a是3，b是负4，振幅是根号下9加16，等于5。所以值域是负5到5，选D。注意不能把3和4直接相加得7，那是错的。">🔊 朗读思路</button><br>用辅助角公式合并成一个正弦：振幅 \(=\sqrt{a^2+b^2}\)。</div>
+  <button class="ans-btn" onclick="toggleAns(this)">显示答案</button>
+  <div class="ans hidden">
+    <p class="final">答案：D</p>
+    <ol>
+      <li>用辅助角公式：\(y=3\sin x-4\cos x=\sqrt{3^2+4^2}\,\sin(x+\varphi)\)。</li>
+      <li>计算振幅：\(\sqrt{3^2+4^2}=\sqrt{9+16}=\sqrt{25}=5\)。</li>
+      <li>即 \(y=5\sin(x+\varphi)\)（其中 \(\tan\varphi=-\dfrac{4}{3}\)）。</li>
+      <li>所以值域为 \([-5,5]\)，选 <b>D</b>。</li>
+    </ol>
+    <div class="warn">⚠ 易错：选 A 的同学把 3 和 4 直接相加得 7——振幅要开方：\(\sqrt{3^2+4^2}=5\)。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-title">4. 函数 \(f(x)=4\sin\left(8x+\dfrac{\pi}{3}\right)\) 的最大值和最小正周期分别为（　）</div>
+  <div class="opts"><span>A. \(4,\ \dfrac{\pi}{4}\)</span><span>B. \(4,\ \pi\)</span><span>C. \(2,\ \pi\)</span><span>D. \(2,\ \dfrac{\pi}{3}\)</span></div>
+  <div class="think"><span class="tlabel">💡 解题思路</span><button class="voice" onclick="speak(this)" data-say="最大值就看A，A等于4。周期用二派除以欧米伽，欧米伽等于8，所以周期是四分之派。最大值4，周期四分之派，选A。">🔊 朗读思路</button><br>最大值就是 A；周期 \(T=\frac{2\pi}{\omega}\)。</div>
+  <button class="ans-btn" onclick="toggleAns(this)">显示答案</button>
+  <div class="ans hidden">
+    <p class="final">答案：A</p>
+    <ol>
+      <li>最大值：\(A=4\)。</li>
+      <li>周期：\(T=\dfrac{2\pi}{\omega}=\dfrac{2\pi}{8}=\dfrac{\pi}{4}\)。</li>
+      <li>所以最大值 4、最小正周期 \(\dfrac{\pi}{4}\)，选 <b>A</b>。</li>
+    </ol>
+  </div>
+</div>
+
+<h3 class="sub">（二）填空题</h3>
+
+<div class="q">
+  <div class="q-title">1. 函数 \(f(x)=\dfrac{1}{3}\sin\left(x+\dfrac{\pi}{6}\right)+1\) 的值域为________.</div>
+  <div class="think"><span class="tlabel">💡 解题思路</span><button class="voice" onclick="speak(this)" data-say="sin括号里的整体取值范围是负1到1。先乘三分之一，变成负三分之一到三分之一。再加1，整体往上移，变成三分之二到三分之四。所以值域是三分之二到三分之四。记住口诀：括号整体看成一个数，它的范围就是负1到1。">🔊 朗读思路</button><br>把括号里的整体看作 \(u\)，则 \(\sin u\in[-1,1]\)，再逐层往外推。</div>
+  <button class="ans-btn" onclick="toggleAns(this)">显示答案</button>
+  <div class="ans hidden">
+    <p class="final">答案：\(\left[\dfrac{2}{3},\ \dfrac{4}{3}\right]\)</p>
+    <ol>
+      <li>无论 \(x\) 取什么，\(\sin\left(x+\dfrac{\pi}{6}\right)\in[-1,\ 1]\)。</li>
+      <li>乘以 \(\dfrac{1}{3}\)：\(\dfrac{1}{3}\sin\left(x+\dfrac{\pi}{6}\right)\in\left[-\dfrac{1}{3},\ \dfrac{1}{3}\right]\)。</li>
+      <li>再加 1：\(f(x)\in\left[1-\dfrac{1}{3},\ 1+\dfrac{1}{3}\right]=\left[\dfrac{2}{3},\ \dfrac{4}{3}\right]\)。</li>
+    </ol>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-title">2. 函数 \(y=\sin(x+11\pi)\cos x\) 的最小值是________.</div>
+  <div class="think"><span class="tlabel">💡 解题思路</span><button class="voice" onclick="speak(this)" data-say="先用诱导公式化简：sin括号x加11派，11派等于10派加派，10派是整数个周期不影响，所以等于sin括号x加派，也就是负sin x。原式变成负sin x乘cos x，再用二倍角公式逆用：sin x乘cos x等于二分之一sin 2x，所以y等于负二分之一sin 2x。sin 2x最大是1时，y最小是负二分之一。所以最小值是负二分之一。">🔊 朗读思路</button><br>先用诱导公式把 \(\sin(x+11\pi)\) 化简，再逆用二倍角公式变成一个函数。</div>
+  <button class="ans-btn" onclick="toggleAns(this)">显示答案</button>
+  <div class="ans hidden">
+    <p class="final">答案：\(-\dfrac{1}{2}\)</p>
+    <ol>
+      <li>化简：\(11\pi=10\pi+\pi\)，由诱导公式 \(\sin(x+11\pi)=\sin(x+\pi)=-\sin x\)。</li>
+      <li>代入：\(y=-\sin x\cos x\)。</li>
+      <li>逆用二倍角公式：\(\sin x\cos x=\dfrac{1}{2}\sin 2x\)，所以 \(y=-\dfrac{1}{2}\sin 2x\)。</li>
+      <li>当 \(\sin 2x=1\)（最大）时，\(y=-\dfrac{1}{2}\)（最小）。</li>
+      <li>所以最小值是 \(-\dfrac{1}{2}\)。</li>
+    </ol>
+  </div>
+</div>
+
+<h3 class="sub">（三）解答题</h3>
+
+<div class="q">
+  <div class="q-title">计算函数 \(y=5\sin\left(3x+\dfrac{\pi}{6}\right)\) 的最小正周期，并指出该函数如何由 \(y=\sin x\) 经过变换得到.</div>
+  <div class="think"><span class="tlabel">💡 解题思路</span><button class="voice" onclick="speak(this)" data-say="周期直接套公式：欧米伽等于3，周期是二派除以三。变换过程按标准顺序三步走：第一步，把y等于sin x的图像横坐标缩短为原来的三分之一倍，得到y等于sin 3x。第二步，向左平移十八分之派个单位，注意平移量是派比6再除以3，得到y等于sin括号3x加六分之派。第三步，纵坐标伸长为原来的5倍，得到y等于5sin括号3x加六分之派。最容易错的是第二步：先变周期再平移时，平移量要除以欧米伽。">🔊 朗读思路</button><br>先变周期、再平移时，平移量 \(=\dfrac{|\varphi|}{\omega}\)，本题是 \(\frac{\pi}{6}\div 3=\frac{\pi}{18}\)。</div>
+  <button class="ans-btn" onclick="toggleAns(this)">显示答案</button>
+  <div class="ans hidden">
+    <p class="final">答案：\(T=\dfrac{2\pi}{3}\)；变换过程见下面三步</p>
+    <ol>
+      <li>求周期：\(\omega=3\)，所以 \(T=\dfrac{2\pi}{\omega}=\dfrac{2\pi}{3}\)。</li>
+      <li>第一步（周期变换）：把 \(y=\sin x\) 图像上所有点的<b>横坐标缩短为原来的 \(\dfrac{1}{3}\)</b> 倍，得到 \(y=\sin 3x\)。</li>
+      <li>第二步（平移变换）：向<b>左平移 \(\dfrac{\pi}{18}\)</b> 个单位，得到 \(y=\sin\left(3x+\dfrac{\pi}{6}\right)\)。（因为 \(3\left(x+\dfrac{\pi}{18}\right)=3x+\dfrac{\pi}{6}\)）</li>
+      <li>第三步（振幅变换）：把所得图像上所有点的<b>纵坐标伸长为原来的 5 倍</b>，得到 \(y=5\sin\left(3x+\dfrac{\pi}{6}\right)\)。</li>
+    </ol>
+    <div class="warn">⚠ 易错：先变周期后平移，平移量是 \(\frac{\pi}{18}\) 不是 \(\frac{\pi}{6}\)——要先把系数 3 提出来：\(3x+\frac{\pi}{6}=3\left(x+\frac{\pi}{18}\right)\)。</div>
+  </div>
+</div>
+
+<h2 class="sec">第三部分 · 巩固提升 B 组讲评</h2>
+
+<h3 class="sub">（一）选择题</h3>
+
+<div class="q">
+  <div class="q-title">1. 下列函数中，最小正周期为 \(\dfrac{2\pi}{3}\) 的是（　）</div>
+  <div class="opts"><span>A. \(y=3\sin x\)</span><span>B. \(y=3\sin 2x\)</span><span>C. \(y=3\sin\left(2x+\dfrac{\pi}{2}\right)\)</span><span>D. \(y=3\sin\left(3x+\dfrac{\pi}{3}\right)\)</span></div>
+  <div class="think"><span class="tlabel">💡 解题思路</span><button class="voice" onclick="speak(this)" data-say="由周期反推欧米伽：周期等于二派比欧米伽，周期是三分之二派，所以欧米伽等于3。看四个选项里x的系数：A是1，B是2，C是2，D是3。只有D的欧米伽等于3。φ对周期没有影响。所以选D。">🔊 朗读思路</button><br>正着推：\(T=\frac{2\pi}{\omega}=\frac{2\pi}{3}\Rightarrow \omega=3\)，找 \(x\) 系数是 3 的选项。</div>
+  <button class="ans-btn" onclick="toggleAns(this)">显示答案</button>
+  <div class="ans hidden">
+    <p class="final">答案：D</p>
+    <ol>
+      <li>由 \(T=\dfrac{2\pi}{\omega}=\dfrac{2\pi}{3}\)，得 \(\omega=3\)。</li>
+      <li>A 选项 \(\omega=1\)，\(T=2\pi\)，不符合。</li>
+      <li>B 选项 \(\omega=2\)，\(T=\pi\)，不符合。</li>
+      <li>C 选项 \(\omega=2\)，\(T=\pi\)，不符合（\(\frac{\pi}{2}\) 只是平移，不影响周期）。</li>
+      <li>D 选项 \(\omega=3\)，\(T=\dfrac{2\pi}{3}\)，符合。选 <b>D</b>。</li>
+    </ol>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-title">2. 已知函数 \(f(x)=\sin^4 x-\cos^4 x\)，\(x\in\mathbb{R}\)，下列关于 \(f(x)\) 的奇偶性和周期性的结论完全正确的一组是（　）</div>
+  <div class="opts"><span>A. \(f(x)\) 是奇函数，其最小正周期为 \(\pi\)</span><span>B. \(f(x)\) 是偶函数，其最小正周期为 \(\pi\)</span></div>
+  <div class="opts"><span>C. \(f(x)\) 不是奇函数且不是偶函数，其最小正周期为 \(\dfrac{\pi}{2}\)</span><span>D. \(f(x)\) 不是奇函数且不是偶函数，也不是周期函数</span></div>
+  <div class="think"><span class="tlabel">💡 解题思路</span><button class="voice" onclick="speak(this)" data-say="不要硬算四次方！四次式先用平方差因式分解：sin四次方减cos四次方，等于sin方加cos方，乘以sin方减cos方。前一个括号等于1，后一个括号等于负的cos 2x。所以整个函数化简成负cos 2x。cos是偶函数，加负号还是偶函数。周期：欧米伽等于2，周期是派。所以是偶函数，最小正周期为派，选B。">🔊 朗读思路</button><br>四次式先用平方差因式分解化简成 \(-\cos 2x\)，奇偶性和周期一眼就看出来。</div>
+  <button class="ans-btn" onclick="toggleAns(this)">显示答案</button>
+  <div class="ans hidden">
+    <p class="final">答案：B</p>
+    <ol>
+      <li>因式分解（平方差）：\(\sin^4x-\cos^4x=(\sin^2x+\cos^2x)(\sin^2x-\cos^2x)\)。</li>
+      <li>第一个括号：\(\sin^2x+\cos^2x=1\)。</li>
+      <li>第二个括号：\(\sin^2x-\cos^2x=-\cos 2x\)（逆用二倍角公式）。</li>
+      <li>所以 \(f(x)=-\cos 2x\)。</li>
+      <li>奇偶性：\(\cos(-2x)=\cos 2x\)，加负号仍是偶函数，所以 \(f(x)\) 是<b>偶函数</b>。</li>
+      <li>周期：\(\omega=2\)，\(T=\dfrac{2\pi}{2}=\pi\)。</li>
+      <li>所以是偶函数、最小正周期为 \(\pi\)，选 <b>B</b>。</li>
+    </ol>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-title">3. 把函数 \(y=\sin\left(3x+\dfrac{\pi}{4}\right)\) 的图像向右平移 \(\dfrac{\pi}{12}\) 个单位长度，所得函数的解析式为（　）</div>
+  <div class="opts"><span>A. \(y=\sin 3x\)</span><span>B. \(y=\sin\left(3x+\dfrac{\pi}{2}\right)\)</span><span>C. \(y=\sin\left(3x+\dfrac{\pi}{3}\right)\)</span><span>D. \(y=\sin\left(3x+\dfrac{\pi}{6}\right)\)</span></div>
+  <div class="think"><span class="tlabel">💡 解题思路</span><button class="voice" onclick="speak(this)" data-say="向右平移是把x换成x减去平移量。关键是先把系数3提出来：3x加四分之派等于3倍的括号x加十二分之派。向右平移十二分之派，正好把里面的十二分之派减掉，剩下sin 3x。所以选A。口诀：平移量要除以欧米伽，本题里四分之派除以3正好等于十二分之派。">🔊 朗读思路</button><br>右移 → \(x\) 换成 \(x-\frac{\pi}{12}\)，但必须先提出系数 3 再代。</div>
+  <button class="ans-btn" onclick="toggleAns(this)">显示答案</button>
+  <div class="ans hidden">
+    <p class="final">答案：A</p>
+    <ol>
+      <li>向右平移 \(\dfrac{\pi}{12}\)：把 \(x\) 换成 \(x-\dfrac{\pi}{12}\)。</li>
+      <li>代入：\(y=\sin\left[3\left(x-\dfrac{\pi}{12}\right)+\dfrac{\pi}{4}\right]\)。</li>
+      <li>展开括号：\(3\left(x-\dfrac{\pi}{12}\right)=3x-\dfrac{\pi}{4}\)。</li>
+      <li>所以 \(y=\sin\left(3x-\dfrac{\pi}{4}+\dfrac{\pi}{4}\right)=\sin 3x\)。</li>
+      <li>选 <b>A</b>。</li>
+    </ol>
+    <div class="warn">⚠ 易错：不能直接把 \(\frac{\pi}{12}\) 加进括号得到 \(\frac{\pi}{3}\)（那是选 C 的错法）。要先提出 3：右移 \(\frac{\pi}{12}\) 相当于相位减少 \(3\times\frac{\pi}{12}=\frac{\pi}{4}\)。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-title">4. 若函数 \(f(x)=\sin\left(4\omega x-\dfrac{\pi}{3}\right)\)（\(\omega&gt;0\)）的最小正周期为 \(\pi\)，则它的一条对称轴是（　）</div>
+  <div class="opts"><span>A. \(x=-\dfrac{\pi}{12}\)</span><span>B. \(x=0\)</span><span>C. \(x=\dfrac{\pi}{6}\)</span><span>D. \(x=\dfrac{2\pi}{3}\)</span></div>
+  <div class="think"><span class="tlabel">💡 解题思路</span><button class="voice" onclick="speak(this)" data-say="先由周期求欧米伽：周期是二派比四欧米伽，等于派，所以四欧米伽等于2，欧米伽等于二分之一。函数化简成sin括号2x减三分之派。求对称轴：令2x减三分之派等于二分之派加k派，解得x等于十二分之五派加二分之k派。取k等于负1，x等于负十二分之派，正是选项A。">🔊 朗读思路</button><br>先定 ω，再令相位 \(=\frac{\pi}{2}+k\pi\) 解出对称轴，与选项对照。</div>
+  <button class="ans-btn" onclick="toggleAns(this)">显示答案</button>
+  <div class="ans hidden">
+    <p class="final">答案：A</p>
+    <ol>
+      <li>求 \(\omega\)：\(T=\dfrac{2\pi}{4\omega}=\pi\)，所以 \(4\omega=2\)，\(\omega=\dfrac{1}{2}\)。</li>
+      <li>于是 \(f(x)=\sin\left(2x-\dfrac{\pi}{3}\right)\)。</li>
+      <li>对称轴满足：\(2x-\dfrac{\pi}{3}=\dfrac{\pi}{2}+k\pi\)（\(k\in\mathbb{Z}\)）。</li>
+      <li>解出：\(2x=\dfrac{5\pi}{6}+k\pi\)，即 \(x=\dfrac{5\pi}{12}+\dfrac{k\pi}{2}\)。</li>
+      <li>取 \(k=-1\)：\(x=\dfrac{5\pi}{12}-\dfrac{\pi}{2}=-\dfrac{\pi}{12}\)。</li>
+      <li>\(-\dfrac{\pi}{12}\) 正是选项 A，选 <b>A</b>。</li>
+    </ol>
+    <div class="warn">⚠ 易错：\(x=\frac{\pi}{6}\)（选项 C）是令相位 \(=k\pi\) 解出来的，那是<b>对称中心</b>的位置，不是对称轴。</div>
+  </div>
+</div>
+
+<h3 class="sub">（二）填空题</h3>
+
+<div class="q">
+  <div class="q-title">1. 函数 \(y=\sqrt{3}\sin x+\cos x\) 取最大值时，\(x\) 的取值为________.</div>
+  <div class="think"><span class="tlabel">💡 解题思路</span><button class="voice" onclick="speak(this)" data-say="先用辅助角公式合并：根号3倍的sin x加cos x等于2倍的sin括号x加六分之派。最大值在相位等于二分之派加二k派的时候取得。解出x等于三分之派加二k派，k属于整数。填的时候别忘了加2k派。">🔊 朗读思路</button><br>先合并成 \(2\sin\left(x+\frac{\pi}{6}\right)\)，再令相位 \(=\frac{\pi}{2}+2k\pi\)。</div>
+  <button class="ans-btn" onclick="toggleAns(this)">显示答案</button>
+  <div class="ans hidden">
+    <p class="final">答案：\(x=\dfrac{\pi}{3}+2k\pi\)（\(k\in\mathbb{Z}\)）</p>
+    <ol>
+      <li>辅助角公式：\(y=\sqrt{3}\sin x+\cos x=2\sin\left(x+\dfrac{\pi}{6}\right)\)（振幅 \(\sqrt{3+1}=2\)）。</li>
+      <li>取最大值时：\(x+\dfrac{\pi}{6}=\dfrac{\pi}{2}+2k\pi\)（\(k\in\mathbb{Z}\)）。</li>
+      <li>解出：\(x=\dfrac{\pi}{2}-\dfrac{\pi}{6}+2k\pi=\dfrac{\pi}{3}+2k\pi\)，\(k\in\mathbb{Z}\)。</li>
+    </ol>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-title">2. 函数 \(f(x)=2-3\sin x\) 在 \([0,2\pi]\) 上的增区间为________.</div>
+  <div class="think"><span class="tlabel">💡 解题思路</span><button class="voice" onclick="speak(this)" data-say="注意sin x前面是负3！负号会把增减性反过来。f(x)递增，等价于sin x递减。sin x在0到2派上的减区间是二分之派到二分之三派。所以f的增区间也是二分之派到二分之三派。记住：系数为负，增减相反。">🔊 朗读思路</button><br>\(\sin x\) 前面的系数是 \(-3\)，负号让增减性<b>反过来</b>：\(f\) 增 ⟺ \(\sin x\) 减。</div>
+  <button class="ans-btn" onclick="toggleAns(this)">显示答案</button>
+  <div class="ans hidden">
+    <p class="final">答案：\(\left[\dfrac{\pi}{2},\ \dfrac{3\pi}{2}\right]\)</p>
+    <ol>
+      <li>\(f(x)=2-3\sin x\) 中 \(\sin x\) 的系数是 \(-3&lt;0\)，所以 \(f(x)\) 递增时 \(\sin x\) 递减。</li>
+      <li>\(\sin x\) 在 \([0,2\pi]\) 上的减区间是 \(\left[\dfrac{\pi}{2},\ \dfrac{3\pi}{2}\right]\)。</li>
+      <li>所以 \(f(x)\) 的增区间为 \(\left[\dfrac{\pi}{2},\ \dfrac{3\pi}{2}\right]\)。</li>
+    </ol>
+    <div class="warn">⚠ 易错：直接写 \(\left[-\frac{\pi}{2},\frac{\pi}{2}\right]\)（sin 的增区间）就反了——负号让方向相反。</div>
+  </div>
+</div>
+
+<h3 class="sub">（三）解答题</h3>
+
+<div class="q">
+  <div class="q-title">1. 已知函数 \(y=A\sin(\omega x+\varphi)\)（\(A&gt;0\)，\(\omega&gt;0\)，\(|\varphi|&lt;\dfrac{\pi}{2}\)）在同一周期内，当 \(x=\dfrac{\pi}{9}\) 时，函数取得最大值 4；当 \(x=\dfrac{4\pi}{9}\) 时，函数取得最小值 −4，求函数的解析式.</div>
+  <div class="think"><span class="tlabel">💡 解题思路</span><button class="voice" onclick="speak(this)" data-say="三步走。第一步定A：最大值4最小值负4，A等于4。第二步定欧米伽：相邻的最高点和最低点横坐标相差半个周期，九分之四派减九分之派等于三分之派，所以周期等于三分之二的派，欧米伽等于3。第三步定φ：把最高点九分之派代进去，3乘九分之派加φ等于二分之派，解出φ等于六分之派，符合绝对值小于二分之派的条件。所以解析式是y等于4sin括号3x加六分之派。">🔊 朗读思路</button><br>三步走：A = (最大+最小)÷2 的一半差；最高点与最低点横坐标之差 = 半个周期；代最高点求 φ。</div>
+  <button class="ans-btn" onclick="toggleAns(this)">显示答案</button>
+  <div class="ans hidden">
+    <p class="final">答案：\(y=4\sin\left(3x+\dfrac{\pi}{6}\right)\)</p>
+    <ol>
+      <li>定 \(A\)：最大值 4、最小值 −4，所以 \(A=\dfrac{4-(-4)}{2}=4\)。</li>
+      <li>定 \(\omega\)：相邻的最高点（\(x=\frac{\pi}{9}\)）与最低点（\(x=\frac{4\pi}{9}\)）横坐标之差等于半个周期：\(\dfrac{T}{2}=\dfrac{4\pi}{9}-\dfrac{\pi}{9}=\dfrac{\pi}{3}\)。</li>
+      <li>所以 \(T=\dfrac{2\pi}{3}\)，\(\omega=\dfrac{2\pi}{T}=3\)。</li>
+      <li>定 \(\varphi\)：最高点代入 \(\omega x+\varphi=\dfrac{\pi}{2}+2k\pi\)：\(3\times\dfrac{\pi}{9}+\varphi=\dfrac{\pi}{2}\)（取 \(k=0\)）。</li>
+      <li>解出：\(\varphi=\dfrac{\pi}{2}-\dfrac{\pi}{3}=\dfrac{\pi}{6}\)，且 \(\left|\dfrac{\pi}{6}\right|&lt;\dfrac{\pi}{2}\) 符合条件。</li>
+      <li>所以解析式为 \(y=4\sin\left(3x+\dfrac{\pi}{6}\right)\)。</li>
+    </ol>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-title">*2. 已知函数 \(f(x)=\sin\left(\omega x-\dfrac{\pi}{6}\right)\) 的最小正周期为 \(\pi\)，<br>(1) 求 \(\omega\) 的值及 \(f(x)\) 的最小值；(2) 若 \(\dfrac{\pi}{2}&lt;x&lt;\pi\)，且 \(\sin x=\dfrac{3}{5}\)，求 \(f(x)\) 的值.</div>
+  <div class="think"><span class="tlabel">💡 解题思路</span><button class="voice" onclick="speak(this)" data-say="第一问：周期二派比欧米伽等于派，欧米伽等于2，最小值就是负1。第二问是难点：要用二倍角把sin 2x和cos 2x都算出来。x在二分之派到派之间，是第二象限，cos x取负号，等于负五分之四。sin 2x等于2倍sin x乘cos x，等于负二十五分之二十四。cos 2x用1减2倍sin方x，等于二十五分之七。最后展开sin括号2x减六分之派：sin 2x乘cos六分之派，减cos 2x乘sin六分之派，代进去算，结果是负的50分之括号24倍根号3加7。">🔊 朗读思路</button><br>第(2)问核心：用二倍角求出 \(\sin 2x\)、\(\cos 2x\)，再用两角差公式展开。\(\cos x\) 的正负号由象限决定。</div>
+  <button class="ans-btn" onclick="toggleAns(this)">显示答案</button>
+  <div class="ans hidden">
+    <p class="final">答案：(1) \(\omega=2\)，最小值为 \(-1\)；(2) \(f(x)=-\dfrac{24\sqrt{3}+7}{50}\)</p>
+    <ol>
+      <li><b>(1)</b> 由 \(T=\dfrac{2\pi}{\omega}=\pi\)，得 \(\omega=2\)，所以 \(f(x)=\sin\left(2x-\dfrac{\pi}{6}\right)\)。</li>
+      <li>正弦函数的最小值为 \(-1\)（当 \(2x-\dfrac{\pi}{6}=-\dfrac{\pi}{2}+2k\pi\) 时取得）。</li>
+      <li><b>(2)</b> 因为 \(\dfrac{\pi}{2}&lt;x&lt;\pi\)，\(x\) 在第二象限，\(\cos x&lt;0\)。</li>
+      <li>由 \(\sin x=\dfrac{3}{5}\)：\(\cos x=-\sqrt{1-\sin^2x}=-\sqrt{1-\dfrac{9}{25}}=-\dfrac{4}{5}\)。</li>
+      <li>二倍角：\(\sin 2x=2\sin x\cos x=2\times\dfrac{3}{5}\times\left(-\dfrac{4}{5}\right)=-\dfrac{24}{25}\)。</li>
+      <li>\(\cos 2x=1-2\sin^2x=1-2\times\dfrac{9}{25}=\dfrac{7}{25}\)。</li>
+      <li>展开：\(f(x)=\sin\left(2x-\dfrac{\pi}{6}\right)=\sin 2x\cos\dfrac{\pi}{6}-\cos 2x\sin\dfrac{\pi}{6}\)。</li>
+      <li>代入：\(f(x)=-\dfrac{24}{25}\times\dfrac{\sqrt{3}}{2}-\dfrac{7}{25}\times\dfrac{1}{2}=-\dfrac{24\sqrt{3}}{50}-\dfrac{7}{50}\)。</li>
+      <li>所以 \(f(x)=-\dfrac{24\sqrt{3}+7}{50}\)。</li>
+    </ol>
+    <div class="warn">⚠ 易错：第二象限 \(\cos x\) 是负的，漏掉负号后面全错；\(\cos 2x\) 也可以用 \(\cos^2x-\sin^2x=\frac{16}{25}-\frac{9}{25}=\frac{7}{25}\) 验算。</div>
+  </div>
+</div>
+
+<div class="note">📌 说明：① 教材第 23 页顶部的 "(1) \(f(x)\) 的最小正周期；(2) \(f(x)\) 的最大值、最小值" 是上一页题目的第 (1)(2) 问（题干在前一页），缺少完整题干，故未收录。② 按要求，"四、拓展延伸（这是神奇的一年吗？）" 不作讲解。</div>
+
+<h2 class="sec">讲评小结 · 这节课记住这几句话</h2>
+<div class="knowledge">
+  <h4>六句话口诀</h4>
+  <ol style="margin-left:20px;">
+    <li><b>周期频率一家亲</b>：\(T=\frac{2\pi}{\omega}\)，\(f=\frac{1}{T}\)，判断周期只看 ω。</li>
+    <li><b>振幅看 A，值域 [−A, A]</b>：加常数整体上下移，\(a\sin x\pm b\cos x\) 用辅助角开方求振幅。</li>
+    <li><b>初相带符号</b>：\(\varphi\) 是几就是几，负号别丢。</li>
+    <li><b>先压后移除以 ω</b>：先变周期再平移，平移量是 \(\frac{|\varphi|}{\omega}\)；对称轴令相位 \(=\frac{\pi}{2}+k\pi\)，对称中心令相位 \(=k\pi\)。</li>
+    <li><b>系数为负，增减相反</b>：\(f=2-3\sin x\) 的增减性与 \(\sin x\) 相反。</li>
+    <li><b>四次式先化简</b>：\(\sin^4x-\cos^4x\) 用平方差化成 \(-\cos 2x\) 再判奇偶、求周期；求解析式三步走——定 A、定 ω（半周期）、定 φ（代最高点）。</li>
+  </ol>
+</div>
+
+<p class="footer-tip">6.3 正弦型函数的图像和性质 · 课堂练习答案讲评 ｜ 公式由 MathJax 渲染，需联网加载</p>
+</div>
+
+<script>
+let voiceSel=null,currentBtn=null;
+function pickVoice(){
+  const vs=speechSynthesis.getVoices();
+  const pref=['Xiaoxiao','晓晓','Xiaoyi','晓伊','Yunxi','云希','Yunyang','云扬','Yaoyao','瑶瑶','Kangkang','康康','Xiaoxuan','晓萱','Huihui','慧慧'];
+  for(const p of pref){
+    const v=vs.find(v=>v.lang&&v.lang.indexOf('zh')===0&&v.name.indexOf(p)>=0);
+    if(v)return v;
+  }
+  return vs.find(v=>v.lang&&v.lang.indexOf('zh')===0)||null;
+}
+if(typeof speechSynthesis!=='undefined'){
+  speechSynthesis.onvoiceschanged=function(){voiceSel=pickVoice();};
+}
+function speak(btn){
+  if(currentBtn===btn&&speechSynthesis.speaking){
+    speechSynthesis.cancel();
+    btn.textContent='🔊 朗读思路';
+    currentBtn=null;
+    return;
+  }
+  speechSynthesis.cancel();
+  const u=new SpeechSynthesisUtterance(btn.dataset.say);
+  u.lang='zh-CN';u.rate=0.95;u.pitch=1;
+  if(!voiceSel)voiceSel=pickVoice();
+  if(voiceSel)u.voice=voiceSel;
+  u.onend=function(){btn.textContent='🔊 朗读思路';if(currentBtn===btn)currentBtn=null;};
+  currentBtn=btn;
+  btn.textContent='⏹ 停止朗读';
+  speechSynthesis.speak(u);
+}
+function toggleAns(btn){
+  const box=btn.nextElementSibling;
+  const hidden=box.classList.toggle('hidden');
+  btn.textContent=hidden?'显示答案':'收起答案';
+}
+function toggleAll(show){
+  document.querySelectorAll('.ans-btn').forEach(function(b){
+    const box=b.nextElementSibling;
+    if(show){box.classList.remove('hidden');b.textContent='收起答案';}
+    else{box.classList.add('hidden');b.textContent='显示答案';}
+  });
+}
+</script>
+</body>
+</html>
